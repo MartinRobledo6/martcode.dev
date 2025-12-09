@@ -1,47 +1,48 @@
-
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Desarrollo web profesional en Argentina. Sitios web rápidos, diseño a medida y soluciones digitales para potenciar tu negocio.">
     <link rel="shortcut icon" href="Captura de pantalla 2025-07-10 023756.png" type="image/png">
-    <title>Martcode.dev - Soluciones Web Profesionales</title>
+    <title>Martcode.dev | Desarrollo Web Profesional</title>
+    
     <script src="https://cdn.tailwindcss.com"></script>
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#002F55',
+                        accent: '#F25C05',
+                        secondary: '#3AB7B8',
+                    },
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        body { font-family: 'Poppins', sans-serif; overflow-x: hidden; }
         
-        body {
-            font-family: 'Poppins', sans-serif;
-            scroll-behavior: smooth;
-        }
-        
-        .bg-primary {
-            background-color: #002F55;
-        }
-        
-        .text-primary {
-            color: #002F55;
-        }
-        
-        .bg-accent {
-            background-color: #F25C05;
-        }
-        
-        .text-accent {
-            color: #F25C05;
-        }
-        
-        .bg-secondary {
-            background-color: #3AB7B8;
-        }
-        
-        .text-secondary {
-            color: #3AB7B8;
-        }
-        
-        .nav-link {
-            position: relative;
+        /* Animaciones personalizadas */
+        .float-animation { animation: float 6s ease-in-out infinite; }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
         }
         
         .nav-link::after {
@@ -54,217 +55,120 @@
             background-color: #F25C05;
             transition: width 0.3s ease;
         }
+        .nav-link:hover::after { width: 100%; }
         
-        .nav-link:hover::after {
-            width: 100%;
-        }
-        
-        .hero-image {
-            animation: float 6s ease-in-out infinite;
-        }
-        
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-            100% { transform: translateY(0px); }
-        }
-        
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        }
-        
-        .portfolio-item {
-            transition: all 0.3s ease;
-            overflow: hidden;
-        }
-        
-        .portfolio-item:hover .portfolio-overlay {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
+        /* Portfolio Overlay */
         .portfolio-overlay {
             opacity: 0;
             transform: translateY(20px);
             transition: all 0.3s ease;
         }
-        
-        .input-field:focus {
-            outline: none;
-            border-color: #3AB7B8;
-        }
-        
-        .scroll-top {
-            animation: bounce 2s infinite;
-        }
-        
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
-            40% {transform: translateY(-15px);}
-            60% {transform: translateY(-7px);}
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+            transform: translateY(0);
         }
 
-        /* Chatbot styles */
-#chatbot-container {
-    position: fixed;
-    bottom: 1.5rem;
-    left: 1.5rem;
-    z-index: 9999;
-    font-family: 'Poppins', sans-serif;
-}
-#chatbot-toggle {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    background: #002F55;
-    border: none;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, .25);
-    display: grid;
-    place-items: center;
-    cursor: pointer;
-}
-#chatbot-toggle img {
-    width: 36px;
-    height: 36px;
-}
-#chatbot-window {
-    width: 320px;
-    height: 420px;
-    display: flex;
-    flex-direction: column;
-    background: #fff;
-    border-radius: 10px;
-    box-shadow: 0 6px 24px rgba(0, 0, 0, .3);
-    overflow: hidden;
-    position: absolute;
-    bottom: 80px;
-    left: 0;
-    animation: openChat 0.3s ease forwards;
-}
-@keyframes openChat {
-    from { transform: scale(0); }
-    to { transform: scale(1); }
-}
-#chatbot-window.hidden {
-    display: none;
-}
-#chatbot-window header {
-    background: #002F55;
-    color: white;
-    padding: 0.75rem 1rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-weight: bold;
-}
-#chatbot-messages {
-    flex: 1;
-    padding: 1rem;
-    overflow-y: auto;
-    background: #f5f7fa;
-}
-.chat-msg {
-    margin-bottom: 0.75rem;
-    padding: 0.5rem 0.75rem;
-    max-width: 85%;
-    border-radius: 8px;
-    line-height: 1.4;
-    font-size: 0.9rem;
-}
-.chat-msg.user {
-    background: #002F55;
-    color: white;
-    margin-left: auto;
-}
-.chat-msg.bot {
-    background: #e9ecef;
-    color: #212529;
-}
-#chatbot-form {
-    display: flex;
-    gap: 0.25rem;
-    padding: 0.5rem;
-    border-top: 1px solid #ccc;
-}
-#chatbot-input {
-    flex: 1;
-    padding: 0.5rem 0.75rem;
-    border-radius: 6px;
-    border: 1px solid #ccc;
-}
-#chatbot-form button {
-    padding: 0.5rem 0.75rem;
-    background: #F25C05;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-}
+        /* Marquee Animation (Cinta de logos) */
+        .animate-marquee { animation: marquee 25s linear infinite; }
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* Slow Bounce for WhatsApp */
+        .animate-bounce-slow { animation: bounce 3s infinite; }
+        
     </style>
 </head>
-<body class="bg-white text-gray-800">
-    <!-- Navigation -->
-    <nav class="bg-primary fixed w-full z-50 shadow-lg">
+
+<body class="bg-gray-50 text-gray-800 antialiased selection:bg-accent selection:text-white">
+
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 bg-transparent">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-20 items-center">
-                <div class="flex-shrink-0 flex items-center">
-                    <img src="Captura de pantalla 2025-07-10 023854.png" alt="Logo martcode" class="h-20 w-20 mb-4 md:mb-0 md:mr-3">
-                    <span class="text-white font-bold">mart<span class="text-accent">code</code><span class="text-white">.dev</span></span>
+                <div class="flex-shrink-0 flex items-center group cursor-pointer">
+                    <img src="Captura de pantalla 2025-07-10 023854.png" alt="Logo martcode" class="h-16 w-auto mr-2 transition transform group-hover:scale-105">
+                    <span class="text-white font-bold text-xl tracking-tight">mart<span class="text-accent">code</span><span class="text-gray-300">.dev</span></span>
                 </div>
+                
                 <div class="hidden md:block">
                     <div class="ml-10 flex items-center space-x-8">
-                        <a href="#home" class="nav-link text-white px-3 py-2 text-sm font-medium hover:text-accent transition">Inicio</a>
-                        <a href="#about" class="nav-link text-white px-3 py-2 text-sm font-medium hover:text-accent transition">Sobre mí</a>
-                        <a href="#services" class="nav-link text-white px-3 py-2 text-sm font-medium hover:text-accent transition">Servicios</a>
-                        <a href="#pricing" class="nav-link text-white px-3 py-2 text-sm font-medium hover:text-accent transition">Planes</a>
-                        <a href="#portfolio" class="nav-link text-white px-3 py-2 text-sm font-medium hover:text-accent transition">Portafolio</a>
-                        <a href="#contact" class="nav-link text-white px-3 py-2 text-sm font-medium hover:text-accent transition">Contacto</a>
+                        <a href="#home" class="nav-link text-white px-1 py-2 text-sm font-medium hover:text-accent transition">Inicio</a>
+                        <a href="#about" class="nav-link text-white px-1 py-2 text-sm font-medium hover:text-accent transition">Sobre mí</a>
+                        <a href="#services" class="nav-link text-white px-1 py-2 text-sm font-medium hover:text-accent transition">Servicios</a>
+                        <a href="#portfolio" class="nav-link text-white px-1 py-2 text-sm font-medium hover:text-accent transition">Portafolio</a>
+                        <a href="#pricing" class="nav-link text-white px-1 py-2 text-sm font-medium hover:text-accent transition">Planes</a>
+                        <a href="#contact" class="bg-accent hover:bg-orange-600 text-white px-5 py-2 rounded-full text-sm font-medium transition shadow-md hover:shadow-lg transform hover:-translate-y-0.5">Contacto</a>
                     </div>
                 </div>
+                
                 <div class="md:hidden">
-                    <button id="menu-toggle" class="text-white focus:outline-none">
-                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                        </svg>
+                    <button id="menu-toggle" class="text-white focus:outline-none p-2 rounded-md hover:bg-white/10">
+                        <i class="fas fa-bars text-xl"></i>
                     </button>
                 </div>
             </div>
         </div>
-        <!-- Mobile menu -->
-        <div id="mobile-menu" class="md:hidden hidden bg-primary pb-4">
-            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <a href="#home" class="block px-3 py-2 text-white font-medium hover:text-accent transition">Inicio</a>
-                <a href="#about" class="block px-3 py-2 text-white font-medium hover:text-accent transition">Sobre mí</a>
-                <a href="#services" class="block px-3 py-2 text-white font-medium hover:text-accent transition">Servicios</a>
-                <a href="#pricing" class="block px-3 py-2 text-white font-medium hover:text-accent transition">Planes</a>
-                <a href="#portfolio" class="block px-3 py-2 text-white font-medium hover:text-accent transition">Portafolio</a>
-                <a href="#contact" class="block px-3 py-2 text-white font-medium hover:text-accent transition">Contacto</a>
+        
+        <div id="mobile-menu" class="md:hidden hidden bg-primary border-t border-white/10">
+            <div class="px-4 pt-2 pb-6 space-y-2">
+                <a href="#home" class="block px-3 py-2 text-white font-medium hover:bg-white/10 rounded-md">Inicio</a>
+                <a href="#about" class="block px-3 py-2 text-white font-medium hover:bg-white/10 rounded-md">Sobre mí</a>
+                <a href="#services" class="block px-3 py-2 text-white font-medium hover:bg-white/10 rounded-md">Servicios</a>
+                <a href="#portfolio" class="block px-3 py-2 text-white font-medium hover:bg-white/10 rounded-md">Portafolio</a>
+                <a href="#contact" class="block px-3 py-2 text-accent font-bold hover:bg-white/10 rounded-md">Solicitar Presupuesto</a>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section id="home" class="pt-20 bg-primary text-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-            <div class="flex flex-col md:flex-row items-center">
-                <div class="md:w-1/2 mb-10 md:mb-0">
-                    <h1 class="text-4xl md:text-5xl font-bold mb-6 leading-tight">Potenciá tu presencia digital con <span class="text-accent">soluciones web</span> modernas, eficientes y hechas a medida.</h1>
-                    <p class="text-lg mb-8 text-gray-300">Desarrollo web profesional con WordPress, optimizado para velocidad y resultados.</p>
-                    <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
-                        <a href="#contact" class="bg-accent hover:bg-orange-600 text-white px-8 py-3 rounded-md text-lg font-medium transition duration-300 transform hover:scale-105">Pedí tu presupuesto</a>
-                        <a href="#services" class="border-2 border-white hover:border-secondary text-white hover:text-secondary px-8 py-3 rounded-md text-lg font-medium transition duration-300 transform hover:scale-105">Ver servicios</a>
+    <section id="home" class="pt-32 pb-20 bg-primary text-white relative overflow-hidden">
+        <div class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 rounded-full bg-accent opacity-10 blur-3xl"></div>
+        <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 rounded-full bg-secondary opacity-10 blur-3xl"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <div class="md:w-1/2 text-center md:text-left" data-aos="fade-right">
+                    <div class="inline-block px-3 py-1 mb-4 border border-secondary/50 rounded-full bg-secondary/10 text-secondary text-sm font-semibold">
+                        🚀 Desarrollo Web Full Stack
+                    </div>
+                    <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+                        Tu negocio, abierto <span class="text-accent">24/7</span> y vendiendo en automático.
+                    </h1>
+                    <p class="text-lg md:text-xl mb-8 text-gray-300 max-w-lg mx-auto md:mx-0">
+                        Diseño sitios web estratégicos que convierten visitantes en clientes. Especializado en PyMEs y profesionales que buscan destacar.
+                    </p>
+                    <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 justify-center md:justify-start">
+                        <a href="#contact" class="bg-accent hover:bg-orange-600 text-white px-8 py-4 rounded-lg text-lg font-bold transition duration-300 transform hover:scale-105 shadow-lg shadow-accent/30">
+                            Pedir Presupuesto
+                        </a>
+                        <a href="#portfolio" class="group px-8 py-4 rounded-lg text-lg font-medium text-white border-2 border-white/20 hover:border-white hover:bg-white/5 transition flex items-center justify-center">
+                            Ver trabajos <i class="fas fa-arrow-right ml-2 transform group-hover:translate-x-1 transition"></i>
+                        </a>
                     </div>
                 </div>
-                <div class="md:w-1/2 flex justify-center">
-                    <div class="hero-image relative">
-                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA==&auto=format&fit=crop&w=1470&q=80">
-                        <div class="absolute -bottom-5 -right-5 bg-secondary p-4 rounded-lg shadow-lg">
-                            <div class="flex items-center">
-                                <div class="bg-white p-2 rounded-full mr-3">
-                                    <i class="fas fa-check text-accent text-xl"></i>
+
+                <div class="md:w-1/2 flex justify-center" data-aos="fade-left">
+                    <div class="float-animation relative w-full max-w-lg">
+                        <div class="relative bg-gray-800 rounded-xl overflow-hidden shadow-2xl border border-gray-700 aspect-video group">
+                           <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" 
+                                alt="Dashboard Analytics" 
+                                class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition duration-700">
+                           
+                           <div class="absolute inset-0 bg-gradient-to-t from-primary/90 to-transparent flex items-end p-6">
+                                <div>
+                                    <p class="text-accent font-bold text-sm mb-1">RESULTADOS REALES</p>
+                                    <p class="text-white font-medium">Sitios optimizados para ventas.</p>
                                 </div>
-                                <span class="text-white font-bold">+5 Proyectos</span>
+                           </div>
+                        </div>
+
+                        <div class="absolute -bottom-6 -right-6 bg-white p-4 rounded-xl shadow-xl flex items-center gap-3 animate-bounce" style="animation-duration: 3s;">
+                            <div class="bg-green-100 p-2 rounded-full text-green-600">
+                                <i class="fas fa-chart-line text-xl"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-gray-500 font-bold uppercase">Rendimiento</p>
+                                <p class="text-gray-900 font-bold text-lg">99/100 Google</p>
                             </div>
                         </div>
                     </div>
@@ -273,64 +177,67 @@
         </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="py-20 bg-white">
+    <div class="bg-gray-100 py-6 overflow-hidden border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4">
+            <p class="text-center text-gray-400 text-xs font-bold tracking-widest uppercase mb-4">Potenciado por tecnologías modernas</p>
+            <div class="relative flex overflow-x-hidden group">
+                <div class="animate-marquee whitespace-nowrap flex space-x-16 items-center">
+                    <i class="fab fa-html5 text-4xl text-gray-400 hover:text-orange-500 transition duration-300"></i>
+                    <i class="fab fa-css3-alt text-4xl text-gray-400 hover:text-blue-500 transition duration-300"></i>
+                    <i class="fab fa-js text-4xl text-gray-400 hover:text-yellow-400 transition duration-300"></i>
+                    <i class="fab fa-elementor text-4xl text-gray-400 hover:text-red-500 transition duration-300"></i>
+                    <span class="text-2xl font-bold text-gray-400 hover:text-primary transition duration-300"><i class="fas fa-server mr-2"></i>HOSTINGER</span>
+                    
+                    <i class="fab fa-html5 text-4xl text-gray-400 hover:text-orange-500 transition duration-300"></i>
+                    <i class="fab fa-css3-alt text-4xl text-gray-400 hover:text-blue-500 transition duration-300"></i>
+                    <i class="fab fa-js text-4xl text-gray-400 hover:text-yellow-400 transition duration-300"></i>
+                    <i class="fab fa-elementor text-4xl text-gray-400 hover:text-red-500 transition duration-300"></i>
+                    <span class="text-2xl font-bold text-gray-400 hover:text-primary transition duration-300"><i class="fas fa-server mr-2"></i>HOSTINGER</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section id="about" class="py-24 bg-white relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl font-bold text-primary mb-4">Quién está detrás de martcode.dev</h2>
-                <div class="w-20 h-1 bg-accent mx-auto mb-6"></div>
-                <p class="text-lg text-gray-600 max-w-3xl mx-auto">Mi pasión por la tecnología se combina con soluciones web personalizadas para tu negocio.</p>
+            <div class="text-center mb-16" data-aos="fade-up">
+                <span class="text-accent font-bold tracking-wider uppercase text-sm">El Desarrollador</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-primary mt-2">Quién está detrás de martcode</h2>
+                <div class="w-24 h-1 bg-accent mx-auto mt-6 rounded-full"></div>
             </div>
             
-            <div class="flex flex-col md:flex-row items-center">
-                <div class="md:w-1/3 mb-10 md:mb-0 flex justify-center">
-                    <div class="relative">
-                        <img src="Yo serio fondo blanco.jpg">
-                        <div class="absolute -bottom-5 -right-5 bg-primary p-3 rounded-full">
-                            <i class="fas fa-code text-white text-2xl"></i>
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <div class="md:w-1/3 flex justify-center" data-aos="zoom-in">
+                    <div class="relative group">
+                        <div class="absolute inset-0 bg-accent rounded-2xl transform rotate-6 transition group-hover:rotate-3"></div>
+                        <img src="Foto Robledo Martin en fondo blanco.png" loading="lazy" alt="Martín Robledo" class="relative rounded-2xl shadow-xl w-64 md:w-full max-w-sm z-10 object-cover border-4 border-white">
+                        <div class="absolute -bottom-4 -right-4 z-20 bg-primary text-white p-4 rounded-lg shadow-lg">
+                            <i class="fas fa-code text-2xl"></i>
                         </div>
                     </div>
                 </div>
-                <div class="md:w-2/3 md:pl-12">
-                    <h3 class="text-2xl font-bold text-primary mb-4">Soy <span class="text-accent">Martín Robledo</span>, desarrollador freelance</h3>
-                    <p class="text-gray-600 mb-6">Me especializo en soluciones web personalizadas, rápidas, seguras y orientadas a resultados concretos. Me estoy formando en la UTN San Francisco como programador full stack, pero por ahora combino diseño funcional con herramientas de alto rendimiento como WordPress y Hostinger.</p>
-                    <p class="text-gray-600 mb-8">Mi diferencial: trato cercano, trabajo transparente y compromiso real con cada proyecto. Cada sitio web que desarrollo es una extensión de mi profesionalismo y atención al detalle.</p>
+                <div class="md:w-2/3" data-aos="fade-up" data-aos-delay="200">
+                    <h3 class="text-2xl font-bold text-primary mb-4">Soy <span class="text-accent">Martín Robledo</span>, desarrollador web</h3>
+                    <p class="text-gray-600 mb-6 text-lg leading-relaxed">
+                        No soy una agencia gigante donde sos "un número más". Soy un desarrollador freelance formándome en la <strong>UTN San Francisco</strong>, obsesionado con los detalles.
+                    </p>
+                    <p class="text-gray-600 mb-8 leading-relaxed">
+                        Me especializo en construir sitios web que combinan autonomía total para el cliente con desarrollo a medida cuando el proyecto exige máximo rendimiento. Mi objetivo es simple: transformar tu web en una herramienta que genere clientes y pague sola la inversión.
+                    </p>
                     
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                        <div class="flex items-start">
-                            <div class="bg-secondary p-3 rounded-full mr-4">
-                                <i class="fas fa-lightbulb text-white"></i>
-                            </div>
+                        <div class="flex p-4 bg-gray-50 rounded-lg border-l-4 border-secondary hover:shadow-md transition">
+                            <div class="mr-4 text-secondary text-2xl"><i class="fas fa-bolt"></i></div>
                             <div>
-                                <h4 class="font-bold text-primary mb-2">Innovación</h4>
-                                <p class="text-gray-600">Soluciones creativas para problemas complejos</p>
+                                <h4 class="font-bold text-primary">Velocidad</h4>
+                                <p class="text-sm text-gray-500">Optimización de carga extrema.</p>
                             </div>
                         </div>
-                        <div class="flex items-start">
-                            <div class="bg-secondary p-3 rounded-full mr-4">
-                                <i class="fas fa-bolt text-white"></i>
-                            </div>
+                        <div class="flex p-4 bg-gray-50 rounded-lg border-l-4 border-secondary hover:shadow-md transition">
+                            <div class="mr-4 text-secondary text-2xl"><i class="fas fa-mobile-alt"></i></div>
                             <div>
-                                <h4 class="font-bold text-primary mb-2">Rendimiento</h4>
-                                <p class="text-gray-600">Sitios optimizados para máxima velocidad</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start">
-                            <div class="bg-secondary p-3 rounded-full mr-4">
-                                <i class="fas fa-shield-alt text-white"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-primary mb-2">Seguridad</h4>
-                                <p class="text-gray-600">Protección avanzada para tu sitio web</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start">
-                            <div class="bg-secondary p-3 rounded-full mr-4">
-                                <i class="fas fa-headset text-white"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-primary mb-2">Soporte</h4>
-                                <p class="text-gray-600">Acompañamiento continuo post-entrega</p>
+                                <h4 class="font-bold text-primary">Mobile First</h4>
+                                <p class="text-sm text-gray-500">Perfecto en celulares y tablets.</p>
                             </div>
                         </div>
                     </div>
@@ -339,593 +246,461 @@
         </div>
     </section>
 
-    <!-- Services Section -->
-    <section id="services" class="py-20 bg-gray-50">
+    <section id="services" class="py-24 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl font-bold text-primary mb-4">Lo que puedo hacer por tu negocio</h2>
-                <div class="w-20 h-1 bg-accent mx-auto mb-6"></div>
-                <p class="text-lg text-gray-600 max-w-3xl mx-auto">Servicios profesionales diseñados para llevar tu presencia digital al siguiente nivel.</p>
+            <div class="text-center mb-16" data-aos="fade-up">
+                <span class="text-accent font-bold tracking-wider uppercase text-sm">Soluciones</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-primary mt-2">¿Cómo puedo ayudarte?</h2>
+                <div class="w-24 h-1 bg-accent mx-auto mt-6 rounded-full"></div>
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <!-- Service 1 -->
-                <div class="service-card bg-white p-8 rounded-lg shadow-md transition duration-300 hover:border-accent border border-transparent">
-                    <div class="bg-primary bg-opacity-10 p-4 rounded-full w-16 h-16 flex items-center justify-center mb-6">
-                        <i class="fas fa-laptop-code text-accent text-2xl"></i>
+                <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition duration-300 transform hover:-translate-y-2 border-t-4 border-transparent hover:border-accent" data-aos="fade-up" data-aos-delay="0">
+                    <div class="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center mb-6 text-accent text-2xl">
+                        <i class="fas fa-laptop-code"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-primary mb-4">Diseño y desarrollo web</h3>
-                    <p class="text-gray-600 mb-4">Sitios institucionales, tiendas online, portfolios y landing pages profesionales con WordPress.</p>
-                    <ul class="space-y-2 mb-6">
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-secondary mr-2"></i>
-                            <span class="text-gray-600">Diseño responsive</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-secondary mr-2"></i>
-                            <span class="text-gray-600">Experiencia de usuario</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-secondary mr-2"></i>
-                            <span class="text-gray-600">Integraciones personalizadas</span>
-                        </li>
-                    </ul>
-                    <a href="#contact" class="text-accent font-medium inline-flex items-center hover:text-orange-600 transition">
-                        Más información <i class="fas fa-arrow-right ml-2"></i>
-                    </a>
+                    <h3 class="text-xl font-bold text-primary mb-3">Diseño Web</h3>
+                    <p class="text-gray-600 text-sm mb-4">Sitios institucionales y Landing Pages diseñadas para vender. Estética moderna y funcional.</p>
                 </div>
                 
-                <!-- Service 2 -->
-                <div class="service-card bg-white p-8 rounded-lg shadow-md transition duration-300 hover:border-accent border border-transparent">
-                    <div class="bg-primary bg-opacity-10 p-4 rounded-full w-16 h-16 flex items-center justify-center mb-6">
-                        <i class="fas fa-server text-accent text-2xl"></i>
+                <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition duration-300 transform hover:-translate-y-2 border-t-4 border-transparent hover:border-accent" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center mb-6 text-accent text-2xl">
+                        <i class="fas fa-server"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-primary mb-4">Implementación en Hostinger</h3>
-                    <p class="text-gray-600 mb-4">Instalación, configuración técnica y puesta a punto profesional en Hostinger.</p>
-                    <ul class="space-y-2 mb-6">
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-secondary mr-2"></i>
-                            <span class="text-gray-600">Migración sin downtime</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-secondary mr-2"></i>
-                            <span class="text-gray-600">Configuración SSL</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-secondary mr-2"></i>
-                            <span class="text-gray-600">Optimización de servidor</span>
-                        </li>
-                    </ul>
-                    <a href="#contact" class="text-accent font-medium inline-flex items-center hover:text-orange-600 transition">
-                        Más información <i class="fas fa-arrow-right ml-2"></i>
-                    </a>
+                    <h3 class="text-xl font-bold text-primary mb-3">Hosting & Dominio</h3>
+                    <p class="text-gray-600 text-sm mb-4">Configuración completa en Hostinger. Me encargo de los DNS, correos corporativos y el candadito SSL.</p>
                 </div>
                 
-                <!-- Service 3 -->
-                <div class="service-card bg-white p-8 rounded-lg shadow-md transition duration-300 hover:border-accent border border-transparent">
-                    <div class="bg-primary bg-opacity-10 p-4 rounded-full w-16 h-16 flex items-center justify-center mb-6">
-                        <i class="fas fa-search text-accent text-2xl"></i>
+                <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition duration-300 transform hover:-translate-y-2 border-t-4 border-transparent hover:border-accent" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center mb-6 text-accent text-2xl">
+                        <i class="fab fa-google"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-primary mb-4">Optimización SEO</h3>
-                    <p class="text-gray-600 mb-4">Mejora la velocidad, visibilidad en buscadores y experiencia de usuario de tu sitio.</p>
-                    <ul class="space-y-2 mb-6">
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-secondary mr-2"></i>
-                            <span class="text-gray-600">SEO técnico</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-secondary mr-2"></i>
-                            <span class="text-gray-600">Optimización de imágenes</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-secondary mr-2"></i>
-                            <span class="text-gray-600">Caché y compresión</span>
-                        </li>
-                    </ul>
-                    <a href="#contact" class="text-accent font-medium inline-flex items-center hover:text-orange-600 transition">
-                        Más información <i class="fas fa-arrow-right ml-2"></i>
-                    </a>
+                    <h3 class="text-xl font-bold text-primary mb-3">SEO Básico</h3>
+                    <p class="text-gray-600 text-sm mb-4">Estructura optimizada para que Google entienda tu sitio y aparezcas en las búsquedas locales.</p>
                 </div>
                 
-                <!-- Service 4 -->
-                <div class="service-card bg-white p-8 rounded-lg shadow-md transition duration-300 hover:border-accent border border-transparent">
-                    <div class="bg-primary bg-opacity-10 p-4 rounded-full w-16 h-16 flex items-center justify-center mb-6">
-                        <i class="fas fa-tools text-accent text-2xl"></i>
+                <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition duration-300 transform hover:-translate-y-2 border-t-4 border-transparent hover:border-accent" data-aos="fade-up" data-aos-delay="300">
+                    <div class="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center mb-6 text-accent text-2xl">
+                        <i class="fas fa-tools"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-primary mb-4">Soporte y mantenimiento</h3>
-                    <p class="text-gray-600 mb-4">Actualizaciones, ajustes menores y acompañamiento continuo para tu sitio web.</p>
-                    <ul class="space-y-2 mb-6">
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-secondary mr-2"></i>
-                            <span class="text-gray-600">Actualizaciones periódicas</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-secondary mr-2"></i>
-                            <span class="text-gray-600">Copias de seguridad</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-secondary mr-2"></i>
-                            <span class="text-gray-600">Soporte prioritario</span>
-                        </li>
-                    </ul>
-                    <a href="#contact" class="text-accent font-medium inline-flex items-center hover:text-orange-600 transition">
-                        Más información <i class="fas fa-arrow-right ml-2"></i>
-                    </a>
+                    <h3 class="text-xl font-bold text-primary mb-3">Mantenimiento</h3>
+                    <p class="text-gray-600 text-sm mb-4">Actualizaciones, copias de seguridad y pequeños cambios mensuales para que tu web no envejezca.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Pricing Section -->
-    <section id="pricing" class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl font-bold text-primary mb-4">Soluciones a medida para cada etapa de tu proyecto</h2>
-                <div class="w-20 h-1 bg-accent mx-auto mb-6"></div>
-                <p class="text-lg text-gray-600 max-w-3xl mx-auto">Los precios se definen según el alcance y requerimientos específicos de cada proyecto.</p>
-                <p class="text-accent font-medium mt-4">"Pedí tu presupuesto sin compromiso. Estoy para ayudarte."</p>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Starter Plan -->
-                <div class="bg-gray-50 rounded-lg shadow-md overflow-hidden border border-gray-200 hover:border-accent transition duration-300">
-                    <div class="bg-primary text-white py-6 px-8">
-                        <h3 class="text-xl font-bold">Starter</h3>
-                        <p class="text-gray-200">Ideal para proyectos pequeños</p>
-                    </div>
-                    <div class="p-8">
-                        <div class="text-4xl font-bold text-primary mb-4">$350<span class="text-lg text-gray-500">/proyecto</span></div>
-                        <ul class="space-y-4 mb-8">
-                            <li class="flex items-center">
-                                <i class="fas fa-check text-secondary mr-3"></i>
-                                <span>1-3 páginas</span>
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-check text-secondary mr-3"></i>
-                                <span>Diseño responsive</span>
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-check text-secondary mr-3"></i>
-                                <span>Formulario de contacto</span>
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-check text-secondary mr-3"></i>
-                                <span>SEO básico</span>
-                            </li>
-                            <li class="flex items-center text-gray-400">
-                                <i class="fas fa-times text-gray-400 mr-3"></i>
-                                <span>Sin mantenimiento</span>
-                            </li>
-                        </ul>
-                        <a href="#contact" class="block w-full bg-gray-200 hover:bg-accent hover:text-white text-primary text-center py-3 rounded-md font-medium transition duration-300">Consultar</a>
+    <section class="py-20 bg-white border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-primary mb-12" data-aos="fade-up">Clientes que confían</h2>
+            <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <div class="p-8 bg-gray-50 rounded-2xl border-l-4 border-accent shadow-sm relative" data-aos="fade-right">
+                    <i class="fas fa-quote-left text-4xl text-gray-200 absolute top-4 right-4"></i>
+                    <p class="italic text-gray-600 mb-6 relative z-10">"Martín entendió perfectamente lo que necesitaba para mi barbería. El sistema de reservas funciona excelente y los clientes me felicitan por la web."</p>
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center text-white font-bold mr-3">M</div>
+                        <div>
+                            <div class="font-bold text-primary">Matías Godino</div>
+                            <div class="text-xs text-gray-500">Dueño de Hair Studio</div>
+                        </div>
                     </div>
                 </div>
-                
-                <!-- Pro Plan -->
-                <div class="bg-gray-50 rounded-lg shadow-lg overflow-hidden border-2 border-accent transform scale-105 z-10">
-                    <div class="bg-accent text-white py-6 px-8">
-                        <h3 class="text-xl font-bold">Pro</h3>
-                        <p class="text-gray-100">La opción más popular</p>
+                 <div class="p-8 bg-gray-50 rounded-2xl border-l-4 border-secondary shadow-sm relative" data-aos="fade-left">
+                    <i class="fas fa-quote-left text-4xl text-gray-200 absolute top-4 right-4"></i>
+                    <p class="italic text-gray-600 mb-6 relative z-10">"La web carga rapidísimo y mis clientes de seguros ahora me contactan directo por WhatsApp con el botón que integró. Muy profesional."</p>
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 bg-secondary rounded-full flex items-center justify-center text-white font-bold mr-3">F</div>
+                        <div>
+                            <div class="font-bold text-primary">Cliente Seguros FyF</div>
+                            <div class="text-xs text-gray-500">Productor de Seguros</div>
+                        </div>
                     </div>
-                    <div class="p-8">
-                        <div class="text-4xl font-bold text-primary mb-4">$525<span class="text-lg text-gray-500">/proyecto</span></div>
-                        <ul class="space-y-4 mb-8">
-                            <li class="flex items-center">
-                                <i class="fas fa-check text-secondary mr-3"></i>
-                                <span>5-8 páginas</span>
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-check text-secondary mr-3"></i>
-                                <span>Diseño personalizado</span>
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-check text-secondary mr-3"></i>
-                                <span>Integraciones avanzadas</span>
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-check text-secondary mr-3"></i>
-                                <span>SEO completo</span>
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-check text-secondary mr-3"></i>
-                                <span>3 meses de soporte</span>
-                            </li>
-                        </ul>
-                        <a href="#contact" class="block w-full bg-accent hover:bg-orange-600 text-white text-center py-3 rounded-md font-medium transition duration-300">Consultar</a>
-                    </div>
-                </div>
-                
-                <!-- Premium Plan -->
-                <div class="bg-gray-50 rounded-lg shadow-md overflow-hidden border border-gray-200 hover:border-accent transition duration-300">
-                    <div class="bg-primary text-white py-6 px-8">
-                        <h3 class="text-xl font-bold">Premium</h3>
-                        <p class="text-gray-200">Solución completa</p>
-                    </div>
-                    <div class="p-8">
-                        <div class="text-4xl font-bold text-primary mb-4">$800<span class="text-lg text-gray-500">/proyecto</span></div>
-                        <ul class="space-y-4 mb-8">
-                            <li class="flex items-center">
-                                <i class="fas fa-check text-secondary mr-3"></i>
-                                <span>Páginas ilimitadas</span>
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-check text-secondary mr-3"></i>
-                                <span>Diseño premium</span>
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-check text-secondary mr-3"></i>
-                                <span>E-commerce</span>
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-check text-secondary mr-3"></i>
-                                <span>SEO avanzado</span>
-                            </li>
-                            <li class="flex items-center">
-                                <i class="fas fa-check text-secondary mr-3"></i>
-                                <span>6 meses de soporte</span>
-                            </li>
-                        </ul>
-                        <a href="#contact" class="block w-full bg-gray-200 hover:bg-accent hover:text-white text-primary text-center py-3 rounded-md font-medium transition duration-300">Consultar</a>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="mt-16 bg-secondary bg-opacity-10 p-8 rounded-lg border border-secondary border-opacity-30">
-                <h3 class="text-xl font-bold text-primary mb-4 text-center">¿Necesitas algo más específico?</h3>
-                <p class="text-gray-600 text-center mb-6">Cada proyecto es único. Contáctame para desarrollar una solución personalizada que se adapte exactamente a tus necesidades.</p>
-                <div class="flex justify-center">
-                    <a href="#contact" class="bg-accent hover:bg-orange-600 text-white px-8 py-3 rounded-md text-lg font-medium transition duration-300">Solicitar presupuesto</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Portfolio Section -->
-    <section id="portfolio" class="py-20 bg-gray-50">
+    <section id="portfolio" class="py-24 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl font-bold text-primary mb-4">Mirá lo que puedo construir para vos</h2>
-                <div class="w-20 h-1 bg-accent mx-auto mb-6"></div>
-                <p class="text-lg text-gray-600 max-w-3xl mx-auto">Ejemplos reales de sitios desarrollados que reflejan identidad, velocidad y enfoque en resultados.</p>
+            <div class="text-center mb-16" data-aos="fade-up">
+                <span class="text-accent font-bold tracking-wider uppercase text-sm">Portafolio</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-primary mt-2">Mis últimos trabajos</h2>
+                <div class="w-24 h-1 bg-accent mx-auto mt-6 rounded-full"></div>
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Portfolio Item 1 -->
-                <div class="portfolio-item relative rounded-lg overflow-hidden shadow-md">
-                    <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Portfolio Item" class="w-full h-64 object-cover">
-                    <div class="portfolio-overlay absolute inset-0 bg-primary bg-opacity-90 flex flex-col justify-center items-center p-6">
-                        <h3 class="text-white text-xl font-bold mb-2">Tienda Online</h3>
-                        <p class="text-gray-300 text-center mb-4">E-commerce completo con pasarela de pagos y gestión de inventario.</p>
-                        <a href="#" class="bg-accent hover:bg-orange-600 text-white px-6 py-2 rounded-md text-sm font-medium transition">Ver demo</a>
+                <div class="portfolio-item group relative rounded-xl overflow-hidden shadow-lg bg-white" data-aos="fade-up" data-aos-delay="0">
+                    <div class="relative overflow-hidden">
+                        <img src="Barberia matiasgodino.jpg" loading="lazy" alt="Barbería Web" class="w-full h-64 object-cover transform group-hover:scale-110 transition duration-500">
+                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-xs font-bold text-primary shadow-sm">
+                            <i class="fas fa-circle text-green-500 text-[8px] mr-1"></i> Online
+                        </div>
+                    </div>
+                    <div class="portfolio-overlay absolute inset-0 bg-primary/95 flex flex-col justify-center items-center p-6 text-center">
+                        <h3 class="text-white text-xl font-bold mb-1">Matías Godino Hair Studio</h3>
+                        <div class="flex gap-2 mb-3 justify-center">
+                            <span class="bg-white/20 text-white text-[10px] px-2 py-1 rounded-full backdrop-blur-sm border border-white/10 uppercase tracking-wide">WordPress</span>
+                            <span class="bg-white/20 text-white text-[10px] px-2 py-1 rounded-full backdrop-blur-sm border border-white/10 uppercase tracking-wide">AgendaPro</span>
+                        </div>
+                        <p class="text-gray-300 text-sm mb-6 line-clamp-3">Web con integración de AgendaPro para reservas automáticas. Diseño oscuro y elegante acorde a la marca.</p>
+                        <a href="https://martinrobledo6.github.io/matiasgodino_hairstudio/" target="_blank" class="bg-accent hover:bg-orange-600 text-white px-6 py-2 rounded-full text-sm font-medium transition transform hover:scale-105">Ver sitio en vivo</a>
                     </div>
                 </div>
                 
-                <!-- Portfolio Item 2 -->
-                <div class="portfolio-item relative rounded-lg overflow-hidden shadow-md">
-                    <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80" alt="Portfolio Item" class="w-full h-64 object-cover">
-                    <div class="portfolio-overlay absolute inset-0 bg-primary bg-opacity-90 flex flex-col justify-center items-center p-6">
-                        <h3 class="text-white text-xl font-bold mb-2">Sitio Corporativo</h3>
-                        <p class="text-gray-300 text-center mb-4">Web institucional con diseño moderno y sección de blog integrada.</p>
-                        <a href="#" class="bg-accent hover:bg-orange-600 text-white px-6 py-2 rounded-md text-sm font-medium transition">Ver demo</a>
+                <div class="portfolio-item group relative rounded-xl overflow-hidden shadow-lg bg-white" data-aos="fade-up" data-aos-delay="100">
+                    <div class="relative overflow-hidden">
+                        <img src="Logo de fyf.jpg" loading="lazy" alt="Seguros FyF" class="w-full h-64 object-cover transform group-hover:scale-110 transition duration-500">
+                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-xs font-bold text-primary shadow-sm">
+                            <i class="fas fa-circle text-green-500 text-[8px] mr-1"></i> Online
+                        </div>
+                    </div>
+                    <div class="portfolio-overlay absolute inset-0 bg-primary/95 flex flex-col justify-center items-center p-6 text-center">
+                        <h3 class="text-white text-xl font-bold mb-1">Seguros FyF</h3>
+                        <div class="flex gap-2 mb-3 justify-center">
+                            <span class="bg-white/20 text-white text-[10px] px-2 py-1 rounded-full backdrop-blur-sm border border-white/10 uppercase tracking-wide">Landing</span>
+                            <span class="bg-white/20 text-white text-[10px] px-2 py-1 rounded-full backdrop-blur-sm border border-white/10 uppercase tracking-wide">WhatsApp API</span>
+                        </div>
+                        <p class="text-gray-300 text-sm mb-6 line-clamp-3">Web corporativa con botones de acción directa a WhatsApp prellenados. Optimizada para generar leads rápidos.</p>
+                        <a href="https://martinrobledo6.github.io/FyF/" target="_blank" class="bg-accent hover:bg-orange-600 text-white px-6 py-2 rounded-full text-sm font-medium transition transform hover:scale-105">Ver sitio en vivo</a>
                     </div>
                 </div>
-                
-                <!-- Portfolio Item 3 -->
-                <div class="portfolio-item relative rounded-lg overflow-hidden shadow-md">
-                    <img src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Portfolio Item" class="w-full h-64 object-cover">
-                    <div class="portfolio-overlay absolute inset-0 bg-primary bg-opacity-90 flex flex-col justify-center items-center p-6">
-                        <h3 class="text-white text-xl font-bold mb-2">Landing Page</h3>
-                        <p class="text-gray-300 text-center mb-4">Página de conversión optimizada para campañas publicitarias.</p>
-                        <a href="#" class="bg-accent hover:bg-orange-600 text-white px-6 py-2 rounded-md text-sm font-medium transition">Ver demo</a>
+
+                <div class="portfolio-item group relative rounded-xl overflow-hidden shadow-lg bg-white border border-dashed border-gray-300" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-full h-64 bg-gray-100 flex items-center justify-center flex-col">
+                        <i class="fas fa-code text-4xl text-gray-300 mb-2"></i>
+                        <span class="text-gray-400 font-medium">Tu Proyecto Acá</span>
+                    </div>
+                     <div class="portfolio-overlay absolute inset-0 bg-accent/90 flex flex-col justify-center items-center p-6 text-center">
+                        <h3 class="text-white text-xl font-bold mb-2">¿Querés ser el próximo?</h3>
+                        <p class="text-white mb-6">Tengo espacio disponible en mi agenda para comenzar tu proyecto esta semana.</p>
+                        <a href="#contact" class="bg-white text-accent px-6 py-2 rounded-full text-sm font-bold transition transform hover:scale-105">Cotizar ahora</a>
                     </div>
                 </div>
-                
-                <!-- Portfolio Item 4 -->
-                <div class="portfolio-item relative rounded-lg overflow-hidden shadow-md">
-                    <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Portfolio Item" class="w-full h-64 object-cover">
-                    <div class="portfolio-overlay absolute inset-0 bg-primary bg-opacity-90 flex flex-col justify-center items-center p-6">
-                        <h3 class="text-white text-xl font-bold mb-2">Portfolio Creativo</h3>
-                        <p class="text-gray-300 text-center mb-4">Showcase interactivo para artistas y profesionales creativos.</p>
-                        <a href="#" class="bg-accent hover:bg-orange-600 text-white px-6 py-2 rounded-md text-sm font-medium transition">Ver demo</a>
-                    </div>
-                </div>
-                
-                <!-- Portfolio Item 5 -->
-                <div class="portfolio-item relative rounded-lg overflow-hidden shadow-md">
-                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Portfolio Item" class="w-full h-64 object-cover">
-                    <div class="portfolio-overlay absolute inset-0 bg-primary bg-opacity-90 flex flex-col justify-center items-center p-6">
-                        <h3 class="text-white text-xl font-bold mb-2">Blog Profesional</h3>
-                        <p class="text-gray-300 text-center mb-4">Plataforma de contenido con sistema de categorías y búsqueda.</p>
-                        <a href="#" class="bg-accent hover:bg-orange-600 text-white px-6 py-2 rounded-md text-sm font-medium transition">Ver demo</a>
-                    </div>
-                </div>
-                
-                <!-- Portfolio Item 6 -->
-                <div class="portfolio-item relative rounded-lg overflow-hidden shadow-md">
-                    <img src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1472&q=80" alt="Portfolio Item" class="w-full h-64 object-cover">
-                    <div class="portfolio-overlay absolute inset-0 bg-primary bg-opacity-90 flex flex-col justify-center items-center p-6">
-                        <h3 class="text-white text-xl font-bold mb-2">Sistema de Reservas</h3>
-                        <p class="text-gray-300 text-center mb-4">Plataforma de citas online con calendario integrado.</p>
-                        <a href="#" class="bg-accent hover:bg-orange-600 text-white px-6 py-2 rounded-md text-sm font-medium transition">Ver demo</a>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="text-center mt-16">
-                <a href="#contact" class="inline-flex items-center bg-accent hover:bg-orange-600 text-white px-8 py-3 rounded-md text-lg font-medium transition duration-300 transform hover:scale-105">
-                    ¿Listo para tu proyecto? <i class="fas fa-arrow-right ml-2"></i>
-                </a>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="py-20 bg-primary text-white">
+    <section id="pricing" class="py-24 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl font-bold mb-4">Empecemos tu proyecto hoy</h2>
-                <div class="w-20 h-1 bg-accent mx-auto mb-6"></div>
-                <p class="text-lg text-gray-300 max-w-3xl mx-auto">¿Tenés una idea? ¿Querés digitalizar tu negocio? Escribime y te respondo rápido y sin vueltas.</p>
+            <div class="text-center mb-16" data-aos="fade-up">
+                <span class="text-accent font-bold tracking-wider uppercase text-sm">Inversión</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-primary mt-2">Planes claros, sin sorpresas</h2>
+                <div class="w-24 h-1 bg-accent mx-auto mt-6 rounded-full mb-4"></div>
+                <p class="text-gray-500 text-sm">* Precios de referencia. Se aceptan Pesos, USD, USDT y Transferencia.</p>
             </div>
             
-            <div class="flex flex-col lg:flex-row gap-12">
-                <div class="lg:w-1/2">
-                    <form class="space-y-6">
-                        <div>
-                            <label for="name" class="block text-sm font-medium text-gray-300 mb-1">Nombre</label>
-                            <input type="text" id="name" class="input-field w-full px-4 py-3 rounded-md bg-primary border border-gray-600 focus:border-secondary focus:ring-2 focus:ring-secondary transition text-white placeholder-gray-400">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center max-w-6xl mx-auto">
+                <div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100 transition hover:shadow-2xl" data-aos="fade-up" data-aos-delay="0">
+                    <div class="p-8">
+                        <h3 class="text-xl font-bold text-gray-500 uppercase tracking-wide">Starter</h3>
+                        <div class="mt-4 flex items-baseline">
+                            <span class="text-4xl font-extrabold text-primary">$350</span>
+                            <span class="ml-1 text-xl font-medium text-gray-500">USD</span>
                         </div>
-                        <div>
-                            <label for="email" class="block text-sm font-medium text-gray-300 mb-1">Email</label>
-                            <input type="email" id="email" class="input-field w-full px-4 py-3 rounded-md bg-primary border border-gray-600 focus:border-secondary focus:ring-2 focus:ring-secondary transition text-white placeholder-gray-400">
+                        <p class="mt-2 text-sm text-gray-500">Para emprendedores que recién inician.</p>
+                        
+                        <ul class="mt-8 space-y-4">
+                            <li class="flex items-center text-gray-600"><i class="fas fa-check text-secondary mr-3"></i> <span>One Page (1 página)</span></li>
+                            <li class="flex items-center text-gray-600"><i class="fas fa-check text-secondary mr-3"></i> <span>Diseño Responsive</span></li>
+                            <li class="flex items-center text-gray-600"><i class="fas fa-check text-secondary mr-3"></i> <span>Botón de WhatsApp</span></li>
+                            <li class="flex items-center text-gray-400"><i class="fas fa-times mr-3"></i> <span>Sin mantenimiento</span></li>
+                        </ul>
+                        <a href="#contact" class="mt-8 block w-full bg-gray-100 hover:bg-gray-200 text-primary font-bold py-3 px-4 rounded-lg text-center transition">Consultar</a>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-2xl shadow-2xl overflow-hidden border-2 border-accent transform md:scale-105 z-10 relative" data-aos="fade-up" data-aos-delay="100">
+                    <div class="absolute top-0 right-0 bg-accent text-white text-xs font-bold px-3 py-1 rounded-bl-lg uppercase">
+                        Más Vendido
+                    </div>
+                    <div class="p-8">
+                        <h3 class="text-xl font-bold text-accent uppercase tracking-wide">Profesional</h3>
+                        <div class="mt-4 flex items-baseline">
+                            <span class="text-5xl font-extrabold text-primary">$525</span>
+                            <span class="ml-1 text-xl font-medium text-gray-500">USD</span>
                         </div>
-                        <div>
-                            <label for="message" class="block text-sm font-medium text-gray-300 mb-1">Mensaje</label>
-                            <textarea id="message" rows="5" class="input-field w-full px-4 py-3 rounded-md bg-primary border border-gray-600 focus:border-secondary focus:ring-2 focus:ring-secondary transition text-white placeholder-gray-400"></textarea>
+                        <p class="mt-2 text-sm text-gray-500">Ideal para PyMEs y Servicios.</p>
+                        
+                        <ul class="mt-8 space-y-4">
+                            <li class="flex items-center text-gray-700 font-medium"><i class="fas fa-check text-accent mr-3"></i> <span>Hasta 6 secciones</span></li>
+                            <li class="flex items-center text-gray-700 font-medium"><i class="fas fa-check text-accent mr-3"></i> <span>Diseño Personalizado</span></li>
+                            <li class="flex items-center text-gray-700 font-medium"><i class="fas fa-check text-accent mr-3"></i> <span>SEO Técnico Completo</span></li>
+                            <li class="flex items-center text-gray-700 font-medium"><i class="fas fa-check text-accent mr-3"></i> <span>Formulario de Contacto</span></li>
+                            <li class="flex items-center text-gray-700 font-medium"><i class="fas fa-check text-accent mr-3"></i> <span>3 Meses de Soporte</span></li>
+                        </ul>
+                        <a href="#contact" class="mt-8 block w-full bg-accent hover:bg-orange-600 text-white font-bold py-4 px-4 rounded-lg text-center transition shadow-lg hover:shadow-orange-500/30">¡Lo quiero!</a>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100 transition hover:shadow-2xl" data-aos="fade-up" data-aos-delay="200">
+                    <div class="p-8">
+                        <h3 class="text-xl font-bold text-gray-500 uppercase tracking-wide">E-Commerce</h3>
+                        <div class="mt-4 flex items-baseline">
+                            <span class="text-4xl font-extrabold text-primary">$800</span>
+                            <span class="ml-1 text-xl font-medium text-gray-500">USD</span>
                         </div>
-                        <div>
-                            <button type="submit" class="w-full bg-accent hover:bg-orange-600 text-white px-6 py-3 rounded-md text-lg font-medium transition duration-300">Solicitar presupuesto</button>
+                        <p class="mt-2 text-sm text-gray-500">Tiendas online completas.</p>
+                        
+                        <ul class="mt-8 space-y-4">
+                            <li class="flex items-center text-gray-600"><i class="fas fa-check text-secondary mr-3"></i> <span>Catálogo de Productos</span></li>
+                            <li class="flex items-center text-gray-600"><i class="fas fa-check text-secondary mr-3"></i> <span>Pasarela de Pagos</span></li>
+                            <li class="flex items-center text-gray-600"><i class="fas fa-check text-secondary mr-3"></i> <span>Panel Autoadministrable</span></li>
+                            <li class="flex items-center text-gray-600"><i class="fas fa-check text-secondary mr-3"></i> <span>6 Meses de Soporte</span></li>
+                        </ul>
+                        <a href="#contact" class="mt-8 block w-full bg-gray-100 hover:bg-gray-200 text-primary font-bold py-3 px-4 rounded-lg text-center transition">Consultar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-24 bg-primary text-white relative">
+        <div class="absolute inset-0 bg-black/20"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="flex flex-col lg:flex-row gap-16">
+                
+                <div class="lg:w-5/12" data-aos="fade-right">
+                    <span class="text-accent font-bold tracking-wider uppercase text-sm">Contacto</span>
+                    <h2 class="text-4xl font-bold mb-6">Empecemos hoy mismo</h2>
+                    <p class="text-gray-300 mb-8 text-lg">¿Tenés una idea? ¿Querés digitalizar tu negocio? Escribime y te respondo rápido y sin vueltas. Si preferís, hablame directo al WhatsApp.</p>
+                    
+                    <div class="space-y-6">
+                        <a href="mailto:martcode.dev@gmail.com" class="flex items-center group">
+                            <div class="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center mr-4 group-hover:bg-accent transition">
+                                <i class="fas fa-envelope text-white"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-gray-400 text-sm">Email</h4>
+                                <span class="text-white text-lg group-hover:text-accent transition">martcode.dev@gmail.com</span>
+                            </div>
+                        </a>
+                        
+                        <a href="https://wa.me/5493564668322" class="flex items-center group">
+                            <div class="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center mr-4 group-hover:bg-green-500 transition">
+                                <i class="fab fa-whatsapp text-white text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-gray-400 text-sm">WhatsApp</h4>
+                                <span class="text-white text-lg group-hover:text-green-400 transition">+54 9 3564 668322</span>
+                            </div>
+                        </a>
+
+                        <a href="https://instagram.com/martcode.dev" class="flex items-center group">
+                            <div class="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center mr-4 group-hover:bg-pink-600 transition">
+                                <i class="fab fa-instagram text-white text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-gray-400 text-sm">Instagram</h4>
+                                <span class="text-white text-lg group-hover:text-pink-400 transition">@martcode.dev</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="lg:w-7/12" data-aos="fade-left">
+                    <form action="https://formspree.io/f/xwpgnwyl" method="POST" class="bg-white p-8 rounded-2xl shadow-2xl">
+                        <h3 class="text-gray-800 text-2xl font-bold mb-6">Enviame un mensaje</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-gray-600 mb-2">Nombre</label>
+                                <input type="text" name="name" id="name" required class="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:border-secondary focus:ring-2 focus:ring-secondary/20 transition text-gray-800 outline-none" placeholder="Tu nombre">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-600 mb-2">Email</label>
+                                <input type="email" name="email" id="email" required class="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:border-secondary focus:ring-2 focus:ring-secondary/20 transition text-gray-800 outline-none" placeholder="tu@email.com">
+                            </div>
                         </div>
+                        <div class="mb-6">
+                            <label for="message" class="block text-sm font-medium text-gray-600 mb-2">¿En qué puedo ayudarte?</label>
+                            <textarea name="message" id="message" rows="4" required class="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:border-secondary focus:ring-2 focus:ring-secondary/20 transition text-gray-800 outline-none" placeholder="Contame un poco sobre tu proyecto..."></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-accent hover:bg-orange-600 text-white px-6 py-4 rounded-lg text-lg font-bold transition duration-300 shadow-lg hover:shadow-orange-500/30">
+                            Enviar Consulta
+                        </button>
                     </form>
                 </div>
-                
-                <div class="lg:w-1/2">
-                    <div class="bg-primary-darker p-8 rounded-lg border border-gray-700 h-full">
-                        <h3 class="text-xl font-bold mb-6">Datos de contacto</h3>
-                        
-                        <div class="space-y-6">
-                            <div class="flex items-start">
-                                <div class="bg-secondary p-3 rounded-full mr-4">
-                                    <i class="fas fa-envelope text-white"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-medium mb-1">Email</h4>
-                                    <a href="mailto:martcode.dev@gmail.com" class="text-gray-300 hover:text-white transition">martcode.dev@gmail.com</a>
-                                </div>
-                            </div>
-                            
-                            <div class="flex items-start">
-                                <div class="bg-secondary p-3 rounded-full mr-4">
-                                    <i class="fas fa-phone-alt text-white"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-medium mb-1">WhatsApp</h4>
-                                    <a href="https://wa.me/5493564668322" class="text-gray-300 hover:text-white transition">+54 9 3564 668322</a>
-                                </div>
-                            </div>
-                            
-                            <div class="flex items-start">
-                                <div class="bg-secondary p-3 rounded-full mr-4">
-                                    <i class="fab fa-instagram text-white"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-medium mb-1">Instagram</h4>
-                                    <a href="https://instagram.com/martcode.dev" class="text-gray-300 hover:text-white transition">@martcode.dev</a>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="mt-10 pt-6 border-t border-gray-700">
-                            <h4 class="font-medium mb-4">Horario de atención</h4>
-                            <p class="text-gray-300">Lunes a Viernes: 9:00 - 18:00 hs</p>
-                            <p class="text-gray-300">Sábados: 10:00 - 14:00 hs</p>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-primary-darker text-white py-12">
+    <footer class="bg-gray-900 text-white py-12 border-t border-gray-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="mb-6 md:mb-0">
-                    <span class="text-accent text-2xl font-bold">martcode<span class="text-accent">.dev</span></span>
-                    <p class="text-gray-400 mt-2">Soluciones web profesionales y personalizadas.</p>
+                <div class="mb-6 md:mb-0 text-center md:text-left">
+                    <span class="text-2xl font-bold tracking-tight">mart<span class="text-accent">code</span>.dev</span>
+                    <p class="text-gray-500 mt-2 text-sm">Desarrollo Web en San Francisco, Córdoba.</p>
                 </div>
                 
                 <div class="flex space-x-6">
-                    <a href="https://www.instagram.com/martcode.dev/" class="text-gray-400 hover:text-white transition">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a href="https://www.linkedin.com/in/tecmartinrobledo/" class="text-gray-400 hover:text-white transition">
-                        <i class="fab fa-linkedin-in"></i>
-                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition transform hover:scale-110"><i class="fab fa-instagram text-xl"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-white transition transform hover:scale-110"><i class="fab fa-linkedin-in text-xl"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-white transition transform hover:scale-110"><i class="fab fa-github text-xl"></i></a>
                 </div>
             </div>
             
-            <div class="mt-8 pt-8 border-t border-gray-800">
-                <div class="flex flex-col md:flex-row justify-between items-center">
-                    <p class="text-gray-400 text-sm">© 2025 martcode.dev. Todos los derechos reservados.</p>
-                    <div class="mt-4 md:mt-0">
-                        <a href="#" class="text-gray-400 hover:text-white text-sm transition mr-4">Política de privacidad</a>
-                        <a href="#" class="text-gray-400 hover:text-white text-sm transition">Términos y condiciones</a>
-                    </div>
+            <div class="mt-8 pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
+                <p>&copy; <span id="current-year"></span> martcode.dev. Todos los derechos reservados.</p>
+                <div class="mt-4 md:mt-0 space-x-4">
+                    <a href="#" class="hover:text-white transition">Privacidad</a>
+                    <a href="#" class="hover:text-white transition">Términos</a>
                 </div>
             </div>
         </div>
     </footer>
 
-    <!-- Scroll to Top Button -->
-    <button id="scroll-top" class="fixed bottom-8 right-8 bg-accent hover:bg-orange-600 text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg transition opacity-0 invisible">
+    <button id="scroll-top" aria-label="Volver arriba" class="fixed bottom-8 right-8 bg-accent hover:bg-orange-600 text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg transition-all duration-300 opacity-0 invisible z-40 transform translate-y-4">
         <i class="fas fa-arrow-up"></i>
     </button>
 
+    <a href="https://wa.me/5493564668322?text=Hola%20Martín,%20vi%20tu%20web%20y%20quiero%20consultarte..." target="_blank" class="fixed bottom-24 right-8 bg-green-500 hover:bg-green-600 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-lg transition-all duration-300 z-50 hover:scale-110 animate-bounce-slow" aria-label="WhatsApp">
+        <i class="fab fa-whatsapp text-3xl"></i>
+    </a>
+
+    <div id="chatbot-container">
+        <button id="chatbot-toggle" aria-label="Abrir chatbot">
+            <i class="fas fa-comment-dots text-white text-2xl" id="chat-icon"></i>
+            <img src="Chatbot.png" alt="" class="w-9 h-9 absolute" onerror="this.style.display='none'; document.getElementById('chat-icon').style.display='block'">
+        </button>
+
+        <div id="chatbot-window" class="hidden">
+            <header class="bg-primary text-white p-4 flex justify-between items-center font-bold">
+                <span>martcode.bot</span>
+                <button id="chatbot-close" class="hover:text-accent transition">✕</button>
+            </header>
+            <div id="chatbot-messages" class="flex-1 p-4 overflow-y-auto bg-gray-50 text-sm space-y-3">
+                <div class="chat-msg bot bg-gray-200 text-gray-800 p-3 rounded-lg max-w-[85%] self-start">
+                    Hola! 👋 Soy el asistente virtual. ¿En qué puedo ayudarte hoy?
+                </div>
+            </div>
+            <form id="chatbot-form" autocomplete="off" class="flex gap-2 p-3 border-t border-gray-200 bg-white">
+                <input type="text" id="chatbot-input" placeholder="Escribí tu mensaje..." class="flex-1 p-2 border border-gray-300 rounded-md focus:outline-none focus:border-secondary text-sm" />
+                <button type="submit" class="bg-accent text-white px-4 py-2 rounded-md hover:bg-orange-600 transition">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
     <script>
-        // Mobile menu toggle
+        // --- INICIALIZAR AOS (Animaciones) ---
+        AOS.init({
+            duration: 800,
+            once: true,
+        });
+
+        // --- 1. Navbar Glassmorphism Effect ---
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.remove('bg-transparent');
+                navbar.classList.add('bg-primary', 'shadow-lg');
+            } else {
+                navbar.classList.add('bg-transparent');
+                navbar.classList.remove('bg-primary', 'shadow-lg');
+            }
+        });
+
+        // --- 2. Dynamic Year ---
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // --- 3. Mobile Menu ---
         document.getElementById('menu-toggle').addEventListener('click', function() {
             const menu = document.getElementById('mobile-menu');
             menu.classList.toggle('hidden');
+            // Al abrir menu movil, ponemos fondo solido para leer bien
+            if (!menu.classList.contains('hidden')) {
+                navbar.classList.add('bg-primary');
+            } else if (window.scrollY <= 50) {
+                navbar.classList.remove('bg-primary');
+            }
         });
 
-        // Smooth scrolling for navigation links
+        // --- 4. Smooth Scroll ---
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
-                
                 const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
+                if(targetId === '#') return;
                 
+                const targetElement = document.querySelector(targetId);
                 if (targetElement) {
+                    const headerOffset = 80;
+                    const elementPosition = targetElement.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+        
                     window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
+                        top: offsetPosition,
+                        behavior: "smooth"
                     });
                     
-                    // Close mobile menu if open
-                    const mobileMenu = document.getElementById('mobile-menu');
-                    if (!mobileMenu.classList.contains('hidden')) {
-                        mobileMenu.classList.add('hidden');
-                    }
+                    document.getElementById('mobile-menu').classList.add('hidden');
                 }
             });
         });
 
-        // Scroll to top button
+        // --- 5. Scroll Top Button ---
         const scrollTopButton = document.getElementById('scroll-top');
-        
         window.addEventListener('scroll', function() {
             if (window.pageYOffset > 300) {
-                scrollTopButton.classList.remove('opacity-0', 'invisible');
-                scrollTopButton.classList.add('opacity-100', 'visible');
+                scrollTopButton.classList.remove('opacity-0', 'invisible', 'translate-y-4');
+                scrollTopButton.classList.add('opacity-100', 'visible', 'translate-y-0');
             } else {
-                scrollTopButton.classList.remove('opacity-100', 'visible');
-                scrollTopButton.classList.add('opacity-0', 'invisible');
+                scrollTopButton.classList.add('opacity-0', 'invisible', 'translate-y-4');
+                scrollTopButton.classList.remove('opacity-100', 'visible', 'translate-y-0');
             }
         });
-        
         scrollTopButton.addEventListener('click', function() {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         });
 
-        // Form submission
-        const contactForm = document.querySelector('form');
-        if (contactForm) {
-            contactForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                // Here you would typically send the form data to a server
-                alert('Gracias por tu mensaje. Me pondré en contacto contigo pronto.');
-                this.reset();
-            });
+        // --- 6. Chatbot Logic ---
+        const chatBtn = document.getElementById('chatbot-toggle');
+        const chatBox = document.getElementById('chatbot-window');
+        const closeBtn = document.getElementById('chatbot-close');
+        const chatForm = document.getElementById('chatbot-form');
+        const chatInput = document.getElementById('chatbot-input');
+        const chatArea = document.getElementById('chatbot-messages');
+
+        chatBtn.addEventListener('click', () => {
+            chatBox.classList.toggle('hidden');
+            if (!chatBox.classList.contains('hidden')) {
+                setTimeout(() => chatInput.focus(), 100);
+            }
+        });
+
+        closeBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            chatBox.classList.add('hidden');
+        });
+
+        function addMessage(sender, text) {
+            const div = document.createElement('div');
+            const baseClasses = "p-3 rounded-lg max-w-[85%] text-sm mb-2 break-words shadow-sm";
+            const senderClasses = sender === 'user' 
+                ? "bg-primary text-white ml-auto rounded-br-none" 
+                : "bg-gray-200 text-gray-800 mr-auto rounded-bl-none";
+            
+            div.className = `${baseClasses} ${senderClasses}`;
+            div.textContent = text;
+            chatArea.appendChild(div);
+            chatArea.scrollTop = chatArea.scrollHeight;
         }
 
-        // Simple animation on scroll
-        const animateOnScroll = function() {
-            const elements = document.querySelectorAll('.service-card, .portfolio-item');
-            
-            elements.forEach(element => {
-                const elementPosition = element.getBoundingClientRect().top;
-                const screenPosition = window.innerHeight / 1.2;
-                
-                if (elementPosition < screenPosition) {
-                    element.style.opacity = '1';
-                    element.style.transform = 'translateY(0)';
-                }
-            });
-        };
+        chatForm.addEventListener('submit', async function (e) {
+            e.preventDefault();
+            const msg = chatInput.value.trim();
+            if (!msg) return;
 
-        // Set initial state for animated elements
-        document.querySelectorAll('.service-card, .portfolio-item').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(20px)';
-            el.style.transition = 'all 0.6s ease';
+            addMessage('user', msg);
+            chatInput.value = '';
+
+            // Respuesta automática (Simulada para que funcione gratis ya)
+            setTimeout(() => {
+                addMessage('bot', '¡Gracias por escribir! 🚀 Estoy terminando un código ahora mismo. Para una respuesta más rápida, tocá el botón de WhatsApp que flota a la derecha. ¡Hablamos ahí!');
+            }, 1000);
         });
-
-        window.addEventListener('scroll', animateOnScroll);
-        window.addEventListener('load', animateOnScroll);
     </script>
-
-    <!-- Chatbot Widget -->
-<div id="chatbot-container">
-  <button id="chatbot-toggle" aria-label="Abrir chatbot">
-    <img src="Chatbot.png" alt="Chat martcode.dev" />
-  </button>
-
-  <div id="chatbot-window" class="hidden">
-    <header>
-      <span>martcode.bot</span>
-      <button id="chatbot-close" aria-label="Cerrar">✕</button>
-    </header>
-    <div id="chatbot-messages"></div>
-    <form id="chatbot-form" autocomplete="off">
-      <input type="text" id="chatbot-input" placeholder="Escribí tu mensaje…" />
-      <button type="submit">▶</button>
-    </form>
-  </div>
-</div>
-
-
-<script>
-  const chatBtn = document.getElementById('chatbot-toggle');
-  const chatBox = document.getElementById('chatbot-window');
-  const closeBtn = document.getElementById('chatbot-close');
-  const form = document.getElementById('chatbot-form');
-  const input = document.getElementById('chatbot-input');
-  const chatArea = document.getElementById('chatbot-messages');
-
-  chatBtn.addEventListener('click', () => chatBox.classList.toggle('hidden'));
-  closeBtn.addEventListener('click', () => chatBox.classList.add('hidden'));
-
-  form.addEventListener('submit', async function (e) {
-    e.preventDefault();
-    const msg = input.value.trim();
-    if (!msg) return;
-
-    addMessage('user', msg);
-    input.value = '';
-
-    const botReply = await getOpenAIReply(msg);
-    addMessage('bot', botReply);
-  });
-
-  function addMessage(sender, text) {
-    const div = document.createElement('div');
-    div.className = `chat-msg ${sender}`;
-    div.textContent = text;
-    chatArea.appendChild(div);
-    chatArea.scrollTop = chatArea.scrollHeight;
-  }
-
-  async function getOpenAIReply(userMsg) {
-    try {
-      const res = await fetch('https://pagina-web-de-mi-marca.vercel.app/api/chat', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: userMsg })
-      });
-      if (!res.ok) throw new Error('Error servidor');
-      const data = await res.json();
-      return data.reply.trim();
-    } catch (err) {
-      console.error(err);
-      return 'Ups, hubo un problema. Probá de nuevo en un momento 🙏';
-    }
-  }
-</script>
 </body>
 </html>
