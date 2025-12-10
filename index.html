@@ -3,10 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Desarrollo web profesional en Argentina. Sitios web rápidos, diseño a medida y soluciones digitales para potenciar tu negocio.">
-    <link rel="shortcut icon" href="Captura de pantalla 2025-07-10 023756.png" type="image/png">
-    <title>Martcode.dev | Desarrollo Web Profesional</title>
+    <meta name="description" content="Desarrollo web estratégico en Argentina. Sitios web rápidos optimizados para SEO y ventas por WhatsApp. Soluciones digitales para PyMEs por Martín Robledo.">
+    <meta name="keywords" content="Desarrollo Web, Diseño Web Argentina, Landing Page, SEO, Programador Web, San Francisco Córdoba, Martín Robledo, Web Venta WhatsApp">
+    <meta name="author" content="Martín Robledo - Martcode.dev">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://martcode.vercel.app/">
+    <link rel="shortcut icon" href="Captura de pantalla 2025-07-10 023854.png" type="image/png">
     
+    <!-- Open Graph / Facebook / WhatsApp -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://martcode.vercel.app/">
+    <meta property="og:title" content="Martcode.dev | Web que convierte visitas en clientes">
+    <meta property="og:description" content="Diseño sitios web estratégicos que llevan a tus clientes directo a tu WhatsApp. Optimización, velocidad y ventas.">
+    <meta property="og:image" content="https://martcode.vercel.app/Captura%20de%20pantalla%202025-07-10%20023854.png">
+
+    <title>Martcode.dev | Desarrollo Web Estratégico & SEO</title>
+    
+    <!-- Tailwind CSS (CDN for consistency with original request, prefer build step for production) -->
     <script src="https://cdn.tailwindcss.com"></script>
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -69,27 +82,50 @@
         }
 
         /* Marquee Animation (Cinta de logos) */
-        .animate-marquee { animation: marquee 25s linear infinite; }
+        .animate-marquee { animation: marquee 30s linear infinite; }
         @keyframes marquee {
             0% { transform: translateX(0); }
             100% { transform: translateX(-50%); }
         }
+        /* Pausar animación al pasar el mouse para mejor UX */
+        .group:hover .animate-marquee {
+            animation-play-state: paused;
+        }
 
         /* Slow Bounce for WhatsApp */
         .animate-bounce-slow { animation: bounce 3s infinite; }
+
+        /* Form Validations */
+        input:user-invalid, textarea:user-invalid {
+            border-color: #ef4444;
+        }
+        input:user-valid, textarea:user-valid {
+            border-color: #3AB7B8;
+        }
+
+        /* Floating CTA Left */
+        .floating-cta-left {
+            animation: fadeInLeft 1s ease-out 2s forwards; /* Delay de 2s */
+            opacity: 0;
+            transform: translateX(-20px);
+        }
+        @keyframes fadeInLeft {
+            to { opacity: 1; transform: translateX(0); }
+        }
 
     </style>
 </head>
 
 <body class="bg-gray-50 text-gray-800 antialiased selection:bg-accent selection:text-white">
 
+    <!-- Navegación -->
     <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 bg-transparent">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-20 items-center">
-                <div class="flex-shrink-0 flex items-center group cursor-pointer">
-                    <img src="Captura de pantalla 2025-07-10 023854.png" alt="Logo martcode" class="h-16 w-auto mr-2 transition transform group-hover:scale-105">
+                <a href="#home" class="flex-shrink-0 flex items-center group cursor-pointer" aria-label="Ir al inicio">
+                    <img src="Captura de pantalla 2025-07-10 023854.png" alt="Logo Martcode Desarrollo Web" class="h-16 w-auto mr-2 transition transform group-hover:scale-105" width="64" height="64">
                     <span class="text-white font-bold text-xl tracking-tight">mart<span class="text-accent">code</span><span class="text-gray-300">.dev</span></span>
-                </div>
+                </a>
                 
                 <div class="hidden md:block">
                     <div class="ml-10 flex items-center space-x-8">
@@ -103,13 +139,14 @@
                 </div>
                 
                 <div class="md:hidden">
-                    <button id="menu-toggle" class="text-white focus:outline-none p-2 rounded-md hover:bg-white/10">
+                    <button id="menu-toggle" aria-label="Abrir menú" class="text-white focus:outline-none p-2 rounded-md hover:bg-white/10">
                         <i class="fas fa-bars text-xl"></i>
                     </button>
                 </div>
             </div>
         </div>
         
+        <!-- Menú Móvil -->
         <div id="mobile-menu" class="md:hidden hidden bg-primary border-t border-white/10">
             <div class="px-4 pt-2 pb-6 space-y-2">
                 <a href="#home" class="block px-3 py-2 text-white font-medium hover:bg-white/10 rounded-md">Inicio</a>
@@ -121,6 +158,7 @@
         </div>
     </nav>
 
+    <!-- Hero Section -->
     <section id="home" class="pt-32 pb-20 bg-primary text-white relative overflow-hidden">
         <div class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 rounded-full bg-accent opacity-10 blur-3xl"></div>
         <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 rounded-full bg-secondary opacity-10 blur-3xl"></div>
@@ -129,35 +167,47 @@
             <div class="flex flex-col md:flex-row items-center gap-12">
                 <div class="md:w-1/2 text-center md:text-left" data-aos="fade-right">
                     <div class="inline-block px-3 py-1 mb-4 border border-secondary/50 rounded-full bg-secondary/10 text-secondary text-sm font-semibold">
-                        🚀 Desarrollo Web & Landing Pages
+                        🚀 Sitios Web que Venden
                     </div>
+                    <!-- H1 Optimizado para Conversión y SEO -->
                     <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight">
-                        Tu negocio, abierto <span class="text-accent">24/7</span> y generando clientes.
+                        Convertí visitantes en clientes <span class="text-accent">24/7</span> con tu web.
                     </h1>
+                    <!-- Subtítulo orientado a beneficios -->
                     <p class="text-lg md:text-xl mb-8 text-gray-300 max-w-lg mx-auto md:mx-0">
-                        Diseño sitios web estratégicos que convierten visitantes en contactos por WhatsApp. Especializado en PyMEs y profesionales que buscan destacar.
+                        Diseño estratégico y SEO local para que tu negocio aparezca en Google y canalice ventas directo a tu WhatsApp. Ideal para PyMEs y Profesionales.
                     </p>
-                    <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 justify-center md:justify-start">
-                        <a href="#contact" class="bg-accent hover:bg-orange-600 text-white px-8 py-4 rounded-lg text-lg font-bold transition duration-300 transform hover:scale-105 shadow-lg shadow-accent/30">
-                            Pedir Presupuesto
+                    
+                    <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 justify-center md:justify-start mb-6">
+                        <a href="#contact" class="bg-accent hover:bg-orange-600 text-white px-8 py-4 rounded-lg text-lg font-bold transition duration-300 transform hover:scale-105 shadow-lg shadow-accent/30 flex items-center justify-center">
+                            Pedir Presupuesto Gratis
                         </a>
                         <a href="#portfolio" class="group px-8 py-4 rounded-lg text-lg font-medium text-white border-2 border-white/20 hover:border-white hover:bg-white/5 transition flex items-center justify-center">
                             Ver trabajos <i class="fas fa-arrow-right ml-2 transform group-hover:translate-x-1 transition"></i>
                         </a>
+                    </div>
+
+                    <!-- Micro-pruebas de confianza -->
+                    <div class="flex items-center justify-center md:justify-start gap-4 text-xs sm:text-sm text-gray-400 font-medium">
+                        <span class="flex items-center"><i class="fas fa-check-circle text-secondary mr-2"></i> Enfoque 100% personalizado</span>
+                        <span class="flex items-center"><i class="fas fa-check-circle text-secondary mr-2"></i> Optimizado Google</span>
                     </div>
                 </div>
 
                 <div class="md:w-1/2 flex justify-center" data-aos="fade-left">
                     <div class="float-animation relative w-full max-w-lg">
                         <div class="relative bg-gray-800 rounded-xl overflow-hidden shadow-2xl border border-gray-700 aspect-video group">
-                           <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" 
-                                alt="Dashboard Analytics" 
+                            <!-- Eager loading para el LCP -->
+                           <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                                alt="Dashboard Analytics mostrando crecimiento de ventas" 
+                                fetchpriority="high"
+                                decoding="async"
                                 class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition duration-700">
                            
                            <div class="absolute inset-0 bg-gradient-to-t from-primary/90 to-transparent flex items-end p-6">
                                 <div>
                                     <p class="text-accent font-bold text-sm mb-1">RESULTADOS REALES</p>
-                                    <p class="text-white font-medium">Sitios optimizados para conectar.</p>
+                                    <p class="text-white font-medium">Tu negocio visible y accesible.</p>
                                 </div>
                            </div>
                         </div>
@@ -177,27 +227,54 @@
         </div>
     </section>
 
+    <!-- Cinta de Tecnologías -->
     <div class="bg-gray-100 py-6 overflow-hidden border-b border-gray-200">
         <div class="max-w-7xl mx-auto px-4">
-            <p class="text-center text-gray-400 text-xs font-bold tracking-widest uppercase mb-4">Potenciado por tecnologías modernas</p>
+            <p class="text-center text-gray-400 text-xs font-bold tracking-widest uppercase mb-4">Stack Tecnológico & Integraciones</p>
             <div class="relative flex overflow-x-hidden group">
-                <div class="animate-marquee whitespace-nowrap flex space-x-16 items-center">
-                    <i class="fab fa-html5 text-4xl text-gray-400 hover:text-orange-500 transition duration-300"></i>
-                    <i class="fab fa-css3-alt text-4xl text-gray-400 hover:text-blue-500 transition duration-300"></i>
-                    <i class="fab fa-js text-4xl text-gray-400 hover:text-yellow-400 transition duration-300"></i>
-                    <i class="fab fa-elementor text-4xl text-gray-400 hover:text-red-500 transition duration-300"></i>
-                    <span class="text-2xl font-bold text-gray-400 hover:text-primary transition duration-300"><i class="fas fa-server mr-2"></i>HOSTINGER</span>
-                    
-                    <i class="fab fa-html5 text-4xl text-gray-400 hover:text-orange-500 transition duration-300"></i>
-                    <i class="fab fa-css3-alt text-4xl text-gray-400 hover:text-blue-500 transition duration-300"></i>
-                    <i class="fab fa-js text-4xl text-gray-400 hover:text-yellow-400 transition duration-300"></i>
-                    <i class="fab fa-elementor text-4xl text-gray-400 hover:text-red-500 transition duration-300"></i>
-                    <span class="text-2xl font-bold text-gray-400 hover:text-primary transition duration-300"><i class="fas fa-server mr-2"></i>HOSTINGER</span>
+                <div class="animate-marquee whitespace-nowrap flex space-x-12 items-center">
+                    <!-- Bloque 1 -->
+                    <div class="flex items-center gap-2 text-gray-400 hover:text-orange-600 transition duration-300">
+                        <i class="fab fa-html5 text-4xl"></i> <span class="font-bold text-lg hidden sm:block">HTML5</span>
+                    </div>
+                    <div class="flex items-center gap-2 text-gray-400 hover:text-blue-500 transition duration-300">
+                        <i class="fab fa-css3-alt text-4xl"></i> <span class="font-bold text-lg hidden sm:block">CSS3</span>
+                    </div>
+                    <div class="flex items-center gap-2 text-gray-400 hover:text-yellow-500 transition duration-300">
+                        <i class="fab fa-js text-4xl"></i> <span class="font-bold text-lg hidden sm:block">JavaScript</span>
+                    </div>
+                    <div class="flex items-center gap-2 text-gray-400 hover:text-teal-500 transition duration-300">
+                        <i class="fas fa-wind text-4xl"></i> <span class="font-bold text-lg hidden sm:block">Tailwind</span>
+                    </div>
+                    <div class="flex items-center gap-2 text-gray-400 hover:text-purple-600 transition duration-300">
+                        <i class="fas fa-server text-3xl"></i> <span class="font-bold text-xl">HOSTINGER</span>
+                    </div>
+
+                    <!-- Duplicado para efecto Marquee infinito -->
+                    <div class="flex items-center gap-2 text-gray-400 hover:text-orange-600 transition duration-300">
+                        <i class="fab fa-html5 text-4xl"></i> <span class="font-bold text-lg hidden sm:block">HTML5</span>
+                    </div>
+                    <div class="flex items-center gap-2 text-gray-400 hover:text-blue-500 transition duration-300">
+                        <i class="fab fa-css3-alt text-4xl"></i> <span class="font-bold text-lg hidden sm:block">CSS3</span>
+                    </div>
+                    <div class="flex items-center gap-2 text-gray-400 hover:text-yellow-500 transition duration-300">
+                        <i class="fab fa-js text-4xl"></i> <span class="font-bold text-lg hidden sm:block">JavaScript</span>
+                    </div>
+                    <div class="flex items-center gap-2 text-gray-400 hover:text-teal-500 transition duration-300">
+                        <i class="fas fa-wind text-4xl"></i> <span class="font-bold text-lg hidden sm:block">Tailwind</span>
+                    </div>
+                    <div class="flex items-center gap-2 text-gray-400 hover:text-purple-600 transition duration-300">
+                        <i class="fas fa-server text-3xl"></i> <span class="font-bold text-xl">HOSTINGER</span>
+                    </div>
+                    <div class="flex items-center gap-2 text-gray-400 hover:text-green-500 transition duration-300">
+                        <i class="fab fa-whatsapp text-4xl"></i> <span class="font-bold text-xl">API WhatsApp</span>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
+    <!-- About Section -->
     <section id="about" class="py-24 bg-white relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16" data-aos="fade-up">
@@ -210,7 +287,8 @@
                 <div class="md:w-1/3 flex justify-center" data-aos="zoom-in">
                     <div class="relative group">
                         <div class="absolute inset-0 bg-accent rounded-2xl transform rotate-6 transition group-hover:rotate-3"></div>
-                        <img src="Foto Robledo Martin en fondo blanco.png" loading="lazy" alt="Martín Robledo" class="relative rounded-2xl shadow-xl w-64 md:w-full max-w-sm z-10 object-cover border-4 border-white">
+                        <!-- Width/Height explícitos para evitar CLS -->
+                        <img src="Foto Robledo Martin en fondo blanco.png" loading="lazy" width="384" height="384" alt="Martín Robledo - Desarrollador Web Fullstack" class="relative rounded-2xl shadow-xl w-64 md:w-full max-w-sm z-10 object-cover border-4 border-white bg-gray-100">
                         <div class="absolute -bottom-4 -right-4 z-20 bg-primary text-white p-4 rounded-lg shadow-lg">
                             <i class="fas fa-code text-2xl"></i>
                         </div>
@@ -219,7 +297,7 @@
                 <div class="md:w-2/3" data-aos="fade-up" data-aos-delay="200">
                     <h3 class="text-2xl font-bold text-primary mb-4">Soy <span class="text-accent">Martín Robledo</span>, desarrollador web</h3>
                     <p class="text-gray-600 mb-6 text-lg leading-relaxed">
-                        No soy una agencia gigante donde sos "un número más". Soy un desarrollador freelance formándome en la <strong>UTN San Francisco</strong>, enfocado en soluciones prácticas.
+                        No soy una agencia gigante donde sos "un número más". Soy un desarrollador freelance capacitado en la <strong>UTN San Francisco</strong>, enfocado en soluciones que funcionan.
                     </p>
                     <p class="text-gray-600 mb-8 leading-relaxed">
                         Me especializo en construir sitios web que sirven como herramienta de venta. Nada de código innecesario ni promesas vacías. Mi objetivo es que tu web se vea profesional y dirija a los clientes directo a tu WhatsApp.
@@ -229,15 +307,15 @@
                         <div class="flex p-4 bg-gray-50 rounded-lg border-l-4 border-secondary hover:shadow-md transition">
                             <div class="mr-4 text-secondary text-2xl"><i class="fas fa-bolt"></i></div>
                             <div>
-                                <h4 class="font-bold text-primary">Velocidad</h4>
-                                <p class="text-sm text-gray-500">Optimización de carga extrema.</p>
+                                <h4 class="font-bold text-primary">Velocidad Extrema</h4>
+                                <p class="text-sm text-gray-500">Optimización de carga para retener visitas.</p>
                             </div>
                         </div>
                         <div class="flex p-4 bg-gray-50 rounded-lg border-l-4 border-secondary hover:shadow-md transition">
                             <div class="mr-4 text-secondary text-2xl"><i class="fas fa-mobile-alt"></i></div>
                             <div>
                                 <h4 class="font-bold text-primary">Mobile First</h4>
-                                <p class="text-sm text-gray-500">Perfecto en celulares y tablets.</p>
+                                <p class="text-sm text-gray-500">Diseño perfecto en celulares.</p>
                             </div>
                         </div>
                     </div>
@@ -246,57 +324,63 @@
         </div>
     </section>
 
+    <!-- Services Section -->
     <section id="services" class="py-24 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16" data-aos="fade-up">
-                <span class="text-accent font-bold tracking-wider uppercase text-sm">Soluciones</span>
+                <span class="text-accent font-bold tracking-wider uppercase text-sm">Soluciones Integrales</span>
                 <h2 class="text-3xl md:text-4xl font-bold text-primary mt-2">¿Cómo puedo ayudarte?</h2>
                 <div class="w-24 h-1 bg-accent mx-auto mt-6 rounded-full"></div>
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition duration-300 transform hover:-translate-y-2 border-t-4 border-transparent hover:border-accent" data-aos="fade-up" data-aos-delay="0">
+                <!-- Card 1 -->
+                <article class="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition duration-300 transform hover:-translate-y-2 border-t-4 border-transparent hover:border-accent" data-aos="fade-up" data-aos-delay="0">
                     <div class="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center mb-6 text-accent text-2xl">
                         <i class="fas fa-laptop-code"></i>
                     </div>
                     <h3 class="text-xl font-bold text-primary mb-3">Diseño Web</h3>
                     <p class="text-gray-600 text-sm mb-4">Sitios institucionales y Landing Pages diseñadas para vender. Estética moderna y funcional.</p>
-                </div>
+                </article>
                 
-                <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition duration-300 transform hover:-translate-y-2 border-t-4 border-transparent hover:border-accent" data-aos="fade-up" data-aos-delay="100">
+                <!-- Card 2 -->
+                <article class="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition duration-300 transform hover:-translate-y-2 border-t-4 border-transparent hover:border-accent" data-aos="fade-up" data-aos-delay="100">
                     <div class="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center mb-6 text-accent text-2xl">
                         <i class="fas fa-server"></i>
                     </div>
                     <h3 class="text-xl font-bold text-primary mb-3">Hosting & Dominio</h3>
-                    <p class="text-gray-600 text-sm mb-4">Asesoría completa. Te guío para contratar el mejor plan en Hostinger (a tu nombre) y configuro todo: DNS y correos.</p>
-                </div>
+                    <p class="text-gray-600 text-sm mb-4">Asesoría completa. Te guío para contratar el mejor plan en Hostinger (a tu nombre) y configuro DNS.</p>
+                </article>
                 
-                <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition duration-300 transform hover:-translate-y-2 border-t-4 border-transparent hover:border-accent" data-aos="fade-up" data-aos-delay="200">
+                <!-- Card 3 -->
+                <article class="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition duration-300 transform hover:-translate-y-2 border-t-4 border-transparent hover:border-accent" data-aos="fade-up" data-aos-delay="200">
                     <div class="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center mb-6 text-accent text-2xl">
                         <i class="fab fa-google"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-primary mb-3">SEO Básico</h3>
+                    <h3 class="text-xl font-bold text-primary mb-3">SEO Técnico</h3>
                     <p class="text-gray-600 text-sm mb-4">Estructura optimizada para que Google entienda tu sitio y aparezcas en las búsquedas locales.</p>
-                </div>
+                </article>
                 
-                <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition duration-300 transform hover:-translate-y-2 border-t-4 border-transparent hover:border-accent" data-aos="fade-up" data-aos-delay="300">
+                <!-- Card 4 -->
+                <article class="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition duration-300 transform hover:-translate-y-2 border-t-4 border-transparent hover:border-accent" data-aos="fade-up" data-aos-delay="300">
                     <div class="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center mb-6 text-accent text-2xl">
                         <i class="fas fa-tools"></i>
                     </div>
                     <h3 class="text-xl font-bold text-primary mb-3">Mantenimiento</h3>
                     <p class="text-gray-600 text-sm mb-4">Actualizaciones, copias de seguridad y pequeños cambios mensuales para que tu web no envejezca.</p>
-                </div>
+                </article>
             </div>
         </div>
     </section>
 
+    <!-- Testimonials -->
     <section class="py-20 bg-white border-b border-gray-100">
         <div class="max-w-7xl mx-auto px-4">
             <h2 class="text-3xl font-bold text-center text-primary mb-12" data-aos="fade-up">Clientes que confían</h2>
             <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
                 <div class="p-8 bg-gray-50 rounded-2xl border-l-4 border-accent shadow-sm relative" data-aos="fade-right">
                     <i class="fas fa-quote-left text-4xl text-gray-200 absolute top-4 right-4"></i>
-                    <p class="italic text-gray-600 mb-6 relative z-10">"Martín supo interpretar exactamente lo que necesitaba y lo transformó en una solución clara, funcional y profesional. Hoy mi presencia online transmite confianza y genera oportunidades reales."</p>
+                    <p class="italic text-gray-600 mb-6 relative z-10">"Martín supo interpretar exactamente lo que necesitaba y lo transformó en una solución clara. Hoy mi presencia online transmite confianza."</p>
                     <div class="flex items-center">
                         <div class="w-10 h-10 bg-primary rounded-full flex items-center justify-center text-white font-bold mr-3">J</div>
                         <div>
@@ -307,7 +391,7 @@
                 </div>
                  <div class="p-8 bg-gray-50 rounded-2xl border-l-4 border-secondary shadow-sm relative" data-aos="fade-left">
                     <i class="fas fa-quote-left text-4xl text-gray-200 absolute top-4 right-4"></i>
-                    <p class="italic text-gray-600 mb-6 relative z-10">"La web carga rapidísimo y mis clientes de seguros ahora me contactan directo por WhatsApp con el botón que integró. Muy profesional."</p>
+                    <p class="italic text-gray-600 mb-6 relative z-10">"La web carga rapidísimo y mis clientes de seguros ahora me contactan directo por WhatsApp con el botón que integró."</p>
                     <div class="flex items-center">
                         <div class="w-10 h-10 bg-secondary rounded-full flex items-center justify-center text-white font-bold mr-3">F</div>
                         <div>
@@ -320,6 +404,7 @@
         </div>
     </section>
 
+    <!-- Portfolio Section -->
     <section id="portfolio" class="py-24 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16" data-aos="fade-up">
@@ -329,26 +414,28 @@
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Item 1 -->
                 <div class="portfolio-item group relative rounded-xl overflow-hidden shadow-lg bg-white" data-aos="fade-up" data-aos-delay="0">
                     <div class="relative overflow-hidden">
-                        <img src="logo-robledo.png" loading="lazy" alt="Barbería Web" class="w-full h-64 object-cover transform group-hover:scale-110 transition duration-500">
+                        <img src="logo-robledo.png" loading="lazy" alt="Sitio Web J.C. Robledo Consultoría" class="w-full h-64 object-cover transform group-hover:scale-110 transition duration-500">
                         <div class="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-xs font-bold text-primary shadow-sm">
                             <i class="fas fa-circle text-green-500 text-[8px] mr-1"></i> Online
                         </div>
                     </div>
                     <div class="portfolio-overlay absolute inset-0 bg-primary/95 flex flex-col justify-center items-center p-6 text-center">
-                        <h3 class="text-white text-xl font-bold mb-1"> J.C.Robledo Consultoria</h3>
+                        <h3 class="text-white text-xl font-bold mb-1">J.C.Robledo Consultoria</h3>
                         <div class="flex gap-2 mb-3 justify-center">
-                            <span class="bg-white/20 text-white text-[10px] px-2 py-1 rounded-full backdrop-blur-sm border border-white/10 uppercase tracking-wide"> HTML CSS JS</span>
+                            <span class="bg-white/20 text-white text-[10px] px-2 py-1 rounded-full backdrop-blur-sm border border-white/10 uppercase tracking-wide">HTML CSS JS</span>
                         </div>
-                        <p class="text-gray-300 text-sm mb-6 line-clamp-3">Landing page estratégica diseñada para posicionamiento de marca y generación de oportunidades de negocio.</p>
-                        <a href="https://martinrobledo6.github.io/J.C.Robledo-Consultoria/" target="_blank" class="bg-accent hover:bg-orange-600 text-white px-6 py-2 rounded-full text-sm font-medium transition transform hover:scale-105">Ver sitio en vivo</a>
+                        <p class="text-gray-300 text-sm mb-6 line-clamp-3">Landing page estratégica diseñada para posicionamiento de marca.</p>
+                        <a href="https://martinrobledo6.github.io/J.C.Robledo-Consultoria/" target="_blank" rel="noopener noreferrer" class="bg-accent hover:bg-orange-600 text-white px-6 py-2 rounded-full text-sm font-medium transition transform hover:scale-105">Ver sitio en vivo</a>
                     </div>
                 </div>
                 
+                <!-- Item 2 -->
                 <div class="portfolio-item group relative rounded-xl overflow-hidden shadow-lg bg-white" data-aos="fade-up" data-aos-delay="100">
                     <div class="relative overflow-hidden">
-                        <img src="Logo de fyf.jpg" loading="lazy" alt="Seguros FyF" class="w-full h-64 object-cover transform group-hover:scale-110 transition duration-500">
+                        <img src="Logo de fyf.jpg" loading="lazy" alt="Sitio Web Seguros FyF" class="w-full h-64 object-cover transform group-hover:scale-110 transition duration-500">
                         <div class="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-xs font-bold text-primary shadow-sm">
                             <i class="fas fa-circle text-green-500 text-[8px] mr-1"></i> Online
                         </div>
@@ -359,11 +446,12 @@
                             <span class="bg-white/20 text-white text-[10px] px-2 py-1 rounded-full backdrop-blur-sm border border-white/10 uppercase tracking-wide">Landing</span>
                             <span class="bg-white/20 text-white text-[10px] px-2 py-1 rounded-full backdrop-blur-sm border border-white/10 uppercase tracking-wide">WhatsApp API</span>
                         </div>
-                        <p class="text-gray-300 text-sm mb-6 line-clamp-3">Web corporativa con botones de acción directa a WhatsApp prellenados. Optimizada para generar leads rápidos.</p>
-                        <a href="https://martinrobledo6.github.io/FyF/" target="_blank" class="bg-accent hover:bg-orange-600 text-white px-6 py-2 rounded-full text-sm font-medium transition transform hover:scale-105">Ver sitio en vivo</a>
+                        <p class="text-gray-300 text-sm mb-6 line-clamp-3">Web corporativa con botones de acción directa a WhatsApp prellenados.</p>
+                        <a href="https://martinrobledo6.github.io/FyF/" target="_blank" rel="noopener noreferrer" class="bg-accent hover:bg-orange-600 text-white px-6 py-2 rounded-full text-sm font-medium transition transform hover:scale-105">Ver sitio en vivo</a>
                     </div>
                 </div>
 
+                <!-- Placeholder -->
                 <div class="portfolio-item group relative rounded-xl overflow-hidden shadow-lg bg-white border border-dashed border-gray-300" data-aos="fade-up" data-aos-delay="200">
                     <div class="w-full h-64 bg-gray-100 flex items-center justify-center flex-col">
                         <i class="fas fa-code text-4xl text-gray-300 mb-2"></i>
@@ -371,7 +459,7 @@
                     </div>
                      <div class="portfolio-overlay absolute inset-0 bg-accent/90 flex flex-col justify-center items-center p-6 text-center">
                         <h3 class="text-white text-xl font-bold mb-2">¿Querés ser el próximo?</h3>
-                        <p class="text-white mb-6">Tengo espacio disponible en mi agenda para comenzar tu proyecto esta semana.</p>
+                        <p class="text-white mb-6">Tengo espacio disponible esta semana.</p>
                         <a href="#contact" class="bg-white text-accent px-6 py-2 rounded-full text-sm font-bold transition transform hover:scale-105">Cotizar ahora</a>
                     </div>
                 </div>
@@ -379,6 +467,7 @@
         </div>
     </section>
 
+    <!-- Pricing Section -->
     <section id="pricing" class="py-24 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16" data-aos="fade-up">
@@ -386,13 +475,14 @@
                 <h2 class="text-3xl md:text-4xl font-bold text-primary mt-2">Planes claros, sin sorpresas</h2>
                 <div class="w-24 h-1 bg-accent mx-auto mt-6 rounded-full mb-4"></div>
                 <p class="text-gray-500 text-sm max-w-2xl mx-auto">
-                    * Precios de referencia por desarrollo (pago único).<br> 
-                    <span class="text-accent font-medium">Nota:</span> El hosting y dominio se abonan por separado al proveedor (aprox. $30-50 USD/año).
+                    * Pagos únicos por desarrollo. <br>
+                    <span class="text-accent font-medium">Nota:</span> Hosting y dominio se abonan por separado (aprox. $30-50 USD/año).
                 </p>
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center max-w-4xl mx-auto">
                 
+                <!-- Plan Starter -->
                 <div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100 transition hover:shadow-2xl" data-aos="fade-up" data-aos-delay="0">
                     <div class="p-8">
                         <h3 class="text-xl font-bold text-gray-500 uppercase tracking-wide">Starter</h3>
@@ -410,9 +500,11 @@
                             <li class="flex items-center text-gray-400"><i class="fas fa-times mr-3"></i> <span>Sin mantenimiento</span></li>
                         </ul>
                         <a href="#contact" class="mt-8 block w-full bg-gray-100 hover:bg-gray-200 text-primary font-bold py-3 px-4 rounded-lg text-center transition">Consultar</a>
+                        <p class="text-center text-xs text-gray-400 mt-2">Respuesta en menos de 4hs</p>
                     </div>
                 </div>
                 
+                <!-- Plan Profesional -->
                 <div class="bg-white rounded-2xl shadow-2xl overflow-hidden border-2 border-accent transform md:scale-105 z-10 relative" data-aos="fade-up" data-aos-delay="100">
                     <div class="absolute top-0 right-0 bg-accent text-white text-xs font-bold px-3 py-1 rounded-bl-lg uppercase">
                         Más Vendido
@@ -433,12 +525,14 @@
                             <li class="flex items-center text-gray-700 font-medium"><i class="fas fa-check text-accent mr-3"></i> <span>3 Meses de Soporte</span></li>
                         </ul>
                         <a href="#contact" class="mt-8 block w-full bg-accent hover:bg-orange-600 text-white font-bold py-4 px-4 rounded-lg text-center transition shadow-lg hover:shadow-orange-500/30">¡Lo quiero!</a>
+                        <p class="text-center text-xs text-gray-400 mt-2">Pago único. Sin comisiones mensuales.</p>
                     </div>
                 </div>
-                
             </div>
         </div>
     </section>
+
+    <!-- Contact Section -->
     <section id="contact" class="py-24 bg-primary text-white relative">
         <div class="absolute inset-0 bg-black/20"></div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -447,7 +541,7 @@
                 <div class="lg:w-5/12" data-aos="fade-right">
                     <span class="text-accent font-bold tracking-wider uppercase text-sm">Contacto</span>
                     <h2 class="text-4xl font-bold mb-6">Empecemos hoy mismo</h2>
-                    <p class="text-gray-300 mb-8 text-lg">¿Tenés una idea? ¿Querés digitalizar tu negocio? Escribime y te respondo rápido y sin vueltas. Si preferís, hablame directo al WhatsApp.</p>
+                    <p class="text-gray-300 mb-8 text-lg">¿Tenés una idea? ¿Querés digitalizar tu negocio? Escribime y te respondo rápido. Si preferís, hablame directo al WhatsApp.</p>
                     
                     <div class="space-y-6">
                         <a href="mailto:martcode.dev@gmail.com" class="flex items-center group">
@@ -460,7 +554,7 @@
                             </div>
                         </a>
                         
-                        <a href="https://wa.me/5493564668322" class="flex items-center group">
+                        <a href="https://wa.me/5493564668322" target="_blank" class="flex items-center group">
                             <div class="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center mr-4 group-hover:bg-green-500 transition">
                                 <i class="fab fa-whatsapp text-white text-xl"></i>
                             </div>
@@ -470,7 +564,7 @@
                             </div>
                         </a>
 
-                        <a href="https://instagram.com/martcode.dev" class="flex items-center group">
+                        <a href="https://instagram.com/martcode.dev" target="_blank" class="flex items-center group">
                             <div class="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center mr-4 group-hover:bg-pink-600 transition">
                                 <i class="fab fa-instagram text-white text-xl"></i>
                             </div>
@@ -483,7 +577,7 @@
                 </div>
                 
                 <div class="lg:w-7/12" data-aos="fade-left">
-                    <form action="https://formspree.io/f/xwpgnwyl" method="POST" class="bg-white p-8 rounded-2xl shadow-2xl">
+                    <form id="contact-form" action="https://formspree.io/f/xwpgnwyl" method="POST" class="bg-white p-8 rounded-2xl shadow-2xl">
                         <h3 class="text-gray-800 text-2xl font-bold mb-6">Enviame un mensaje</h3>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                             <div>
@@ -499,15 +593,17 @@
                             <label for="message" class="block text-sm font-medium text-gray-600 mb-2">¿En qué puedo ayudarte?</label>
                             <textarea name="message" id="message" rows="4" required class="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:border-secondary focus:ring-2 focus:ring-secondary/20 transition text-gray-800 outline-none" placeholder="Contame un poco sobre tu proyecto..."></textarea>
                         </div>
-                        <button type="submit" class="w-full bg-accent hover:bg-orange-600 text-white px-6 py-4 rounded-lg text-lg font-bold transition duration-300 shadow-lg hover:shadow-orange-500/30">
-                            Enviar Consulta
+                        <button id="form-submit-btn" type="submit" class="w-full bg-accent hover:bg-orange-600 text-white px-6 py-4 rounded-lg text-lg font-bold transition duration-300 shadow-lg hover:shadow-orange-500/30 disabled:opacity-70 disabled:cursor-not-allowed">
+                            <span>Enviar Consulta</span>
                         </button>
+                        <p id="form-status" class="mt-3 text-center text-sm font-medium hidden"></p>
                     </form>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Footer -->
     <footer class="bg-gray-900 text-white py-12 border-t border-gray-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row justify-between items-center">
@@ -517,172 +613,124 @@
                 </div>
                 
                 <div class="flex space-x-6">
-                    <a href="#" class="text-gray-400 hover:text-white transition transform hover:scale-110"><i class="fab fa-instagram text-xl"></i></a>
-                    <a href="#" class="text-gray-400 hover:text-white transition transform hover:scale-110"><i class="fab fa-linkedin-in text-xl"></i></a>
-                    <a href="#" class="text-gray-400 hover:text-white transition transform hover:scale-110"><i class="fab fa-github text-xl"></i></a>
+                    <a href="https://www.instagram.com/martcode.dev/" class="text-gray-400 hover:text-white transition transform hover:scale-110" aria-label="Instagram"><i class="fab fa-instagram text-xl"></i></a>
+                    <a href="https://www.linkedin.com/in/tecmartinrobledo/" class="text-gray-400 hover:text-white transition transform hover:scale-110" aria-label="LinkedIn"><i class="fab fa-linkedin-in text-xl"></i></a>
                 </div>
             </div>
             
             <div class="mt-8 pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
                 <p>&copy; <span id="current-year"></span> martcode.dev. Todos los derechos reservados.</p>
-                <div class="mt-4 md:mt-0 space-x-4">
-                </div>
             </div>
         </div>
     </footer>
 
+    <!-- Elementos Flotantes -->
+    
+    <!-- CTA Flotante (Izquierda) -->
+    <a href="#contact" class="hidden md:flex floating-cta-left fixed bottom-8 left-8 bg-white border border-gray-200 text-primary py-2 px-4 rounded-full shadow-lg z-40 items-center hover:bg-gray-50 transition gap-2">
+        <span class="relative flex h-3 w-3">
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
+          <span class="relative inline-flex rounded-full h-3 w-3 bg-accent"></span>
+        </span>
+        <span class="font-medium text-sm">¿Hablamos de tu proyecto?</span>
+    </a>
+
+    <!-- Scroll Top -->
     <button id="scroll-top" aria-label="Volver arriba" class="fixed bottom-8 right-8 bg-accent hover:bg-orange-600 text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg transition-all duration-300 opacity-0 invisible z-40 transform translate-y-4">
         <i class="fas fa-arrow-up"></i>
     </button>
 
-    <a href="https://wa.me/5493564668322?text=Hola%20Martín,%20vi%20tu%20web%20y%20quiero%20consultarte..." target="_blank" class="fixed bottom-24 right-8 bg-green-500 hover:bg-green-600 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-lg transition-all duration-300 z-50 hover:scale-110 animate-bounce-slow" aria-label="WhatsApp">
+    <!-- WhatsApp Flotante -->
+    <a href="https://wa.me/5493564668322?text=Hola%20Martín,%20vi%20tu%20web%20y%20quiero%20consultarte..." target="_blank" class="fixed bottom-24 right-8 bg-green-500 hover:bg-green-600 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-lg transition-all duration-300 z-50 hover:scale-110 animate-bounce-slow" aria-label="Contactar por WhatsApp">
         <i class="fab fa-whatsapp text-3xl"></i>
     </a>
 
-    <div id="chatbot-container">
-        <button id="chatbot-toggle" aria-label="Abrir chatbot">
-            <i class="fas fa-comment-dots text-white text-2xl" id="chat-icon"></i>
-            <img src="Chatbot.png" alt="" class="w-9 h-9 absolute" onerror="this.style.display='none'; document.getElementById('chat-icon').style.display='block'">
-        </button>
-
-        <div id="chatbot-window" class="hidden">
-            <header class="bg-primary text-white p-4 flex justify-between items-center font-bold">
-                <span>martcode.bot</span>
-                <button id="chatbot-close" class="hover:text-accent transition">✕</button>
-            </header>
-            <div id="chatbot-messages" class="flex-1 p-4 overflow-y-auto bg-gray-50 text-sm space-y-3">
-                <div class="chat-msg bot bg-gray-200 text-gray-800 p-3 rounded-lg max-w-[85%] self-start">
-                    Hola! 👋 Soy el asistente virtual. ¿En qué puedo ayudarte hoy?
-                </div>
-            </div>
-            <form id="chatbot-form" autocomplete="off" class="flex gap-2 p-3 border-t border-gray-200 bg-white">
-                <input type="text" id="chatbot-input" placeholder="Escribí tu mensaje..." class="flex-1 p-2 border border-gray-300 rounded-md focus:outline-none focus:border-secondary text-sm" />
-                <button type="submit" class="bg-accent text-white px-4 py-2 rounded-md hover:bg-orange-600 transition">
-                    <i class="fas fa-paper-plane"></i>
-                </button>
-            </form>
-        </div>
-    </div>
-
+    <!-- Scripts Optimizados y Consolidados -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
     <script>
-        // --- INICIALIZAR AOS (Animaciones) ---
-        AOS.init({
-            duration: 800,
-            once: true,
-        });
+        // --- INICIALIZACIÓN ---
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // 1. AOS (Animaciones)
+            AOS.init({ duration: 800, once: true });
 
-        // --- 1. Navbar Glassmorphism Effect ---
-        const navbar = document.getElementById('navbar');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                navbar.classList.remove('bg-transparent');
-                navbar.classList.add('bg-primary', 'shadow-lg');
-            } else {
-                navbar.classList.add('bg-transparent');
-                navbar.classList.remove('bg-primary', 'shadow-lg');
-            }
-        });
+            // 2. Dynamic Year
+            document.getElementById('current-year').textContent = new Date().getFullYear();
 
-        // --- 2. Dynamic Year ---
-        document.getElementById('current-year').textContent = new Date().getFullYear();
+            // 3. Navbar Logic
+            const navbar = document.getElementById('navbar');
+            const handleScroll = () => {
+                if (window.scrollY > 50) {
+                    navbar.classList.remove('bg-transparent');
+                    navbar.classList.add('bg-primary', 'shadow-lg');
+                } else {
+                    navbar.classList.add('bg-transparent');
+                    navbar.classList.remove('bg-primary', 'shadow-lg');
+                }
+            };
+            window.addEventListener('scroll', handleScroll);
 
-        // --- 3. Mobile Menu ---
-        document.getElementById('menu-toggle').addEventListener('click', function() {
-            const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('hidden');
-            // Al abrir menu movil, ponemos fondo solido para leer bien
-            if (!menu.classList.contains('hidden')) {
-                navbar.classList.add('bg-primary');
-            } else if (window.scrollY <= 50) {
-                navbar.classList.remove('bg-primary');
-            }
-        });
-
-        // --- 4. Smooth Scroll ---
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                if(targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    const headerOffset = 80;
-                    const elementPosition = targetElement.getBoundingClientRect().top;
-                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-        
-                    window.scrollTo({
-                        top: offsetPosition,
-                        behavior: "smooth"
-                    });
-                    
-                    document.getElementById('mobile-menu').classList.add('hidden');
+            // 4. Mobile Menu
+            const menuToggle = document.getElementById('menu-toggle');
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            menuToggle.addEventListener('click', function() {
+                mobileMenu.classList.toggle('hidden');
+                if (!mobileMenu.classList.contains('hidden')) {
+                    navbar.classList.add('bg-primary');
+                } else if (window.scrollY <= 50) {
+                    navbar.classList.remove('bg-primary');
                 }
             });
-        });
 
-        // --- 5. Scroll Top Button ---
-        const scrollTopButton = document.getElementById('scroll-top');
-        window.addEventListener('scroll', function() {
-            if (window.pageYOffset > 300) {
-                scrollTopButton.classList.remove('opacity-0', 'invisible', 'translate-y-4');
-                scrollTopButton.classList.add('opacity-100', 'visible', 'translate-y-0');
-            } else {
-                scrollTopButton.classList.add('opacity-0', 'invisible', 'translate-y-4');
-                scrollTopButton.classList.remove('opacity-100', 'visible', 'translate-y-0');
-            }
-        });
-        scrollTopButton.addEventListener('click', function() {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-
-        // --- 6. Chatbot Logic ---
-        const chatBtn = document.getElementById('chatbot-toggle');
-        const chatBox = document.getElementById('chatbot-window');
-        const closeBtn = document.getElementById('chatbot-close');
-        const chatForm = document.getElementById('chatbot-form');
-        const chatInput = document.getElementById('chatbot-input');
-        const chatArea = document.getElementById('chatbot-messages');
-
-        chatBtn.addEventListener('click', () => {
-            chatBox.classList.toggle('hidden');
-            if (!chatBox.classList.contains('hidden')) {
-                setTimeout(() => chatInput.focus(), 100);
-            }
-        });
-
-        closeBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            chatBox.classList.add('hidden');
-        });
-
-        function addMessage(sender, text) {
-            const div = document.createElement('div');
-            const baseClasses = "p-3 rounded-lg max-w-[85%] text-sm mb-2 break-words shadow-sm";
-            const senderClasses = sender === 'user' 
-                ? "bg-primary text-white ml-auto rounded-br-none" 
-                : "bg-gray-200 text-gray-800 mr-auto rounded-bl-none";
+            // 5. Smooth Scroll & Close Menu
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if(targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        const headerOffset = 80;
+                        const elementPosition = targetElement.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
             
-            div.className = `${baseClasses} ${senderClasses}`;
-            div.textContent = text;
-            chatArea.appendChild(div);
-            chatArea.scrollTop = chatArea.scrollHeight;
-        }
+                        window.scrollTo({ top: offsetPosition, behavior: "smooth" });
+                        mobileMenu.classList.add('hidden');
+                    }
+                });
+            });
 
-        chatForm.addEventListener('submit', async function (e) {
-            e.preventDefault();
-            const msg = chatInput.value.trim();
-            if (!msg) return;
+            // 6. Scroll Top Button
+            const scrollTopButton = document.getElementById('scroll-top');
+            window.addEventListener('scroll', function() {
+                if (window.pageYOffset > 300) {
+                    scrollTopButton.classList.remove('opacity-0', 'invisible', 'translate-y-4');
+                    scrollTopButton.classList.add('opacity-100', 'visible', 'translate-y-0');
+                } else {
+                    scrollTopButton.classList.add('opacity-0', 'invisible', 'translate-y-4');
+                    scrollTopButton.classList.remove('opacity-100', 'visible', 'translate-y-0');
+                }
+            });
+            scrollTopButton.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
 
-            addMessage('user', msg);
-            chatInput.value = '';
-
-            // Respuesta automática (Simulada para que funcione gratis ya)
-            setTimeout(() => {
-                addMessage('bot', '¡Gracias por escribir! 🚀 Estoy terminando un código ahora mismo. Para una respuesta más rápida, tocá el botón de WhatsApp que flota a la derecha. ¡Hablamos ahí!');
-            }, 1000);
+            // 7. Form Handling (Feedback visual)
+            const contactForm = document.getElementById('contact-form');
+            if(contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    const btn = document.getElementById('form-submit-btn');
+                    const status = document.getElementById('form-status');
+                    
+                    // Solo para efecto visual antes de que Formspree redirija
+                    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
+                    btn.disabled = true;
+                    btn.classList.add('opacity-75');
+                });
+            }
         });
     </script>
 </body>
